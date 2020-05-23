@@ -5,30 +5,38 @@ public class ControlPlataforma : MonoBehaviour
 {
     // Esta variable controlará si se ha iniciado o no, mientras no se inicie, la posición X de la bola será la misma que la de la plataforma
     private bool iniciado = false;
-    private GameObject bola;
+    
+    public Rigidbody2D bola;
+    public Rigidbody2D bolaConFisicas;
+    
     private int numBotes = 0;
 
     // Velocidad a la que se desplaza la plataforma (medido en u/s)
     private float velocidad = 20f;
 
+    // Velocidad a la que se desplazan los aliens (medido en u/s)
+    private float velocidadBola = 8f; //facil
 
     // Fuerza de lanzamiento del rebote
-    private float fuerza = 0.5f;
+    private float fuerza = 4f;
 
-    // Acceso al prefab del disparo
-    //public Rigidbody2D disparo;
+    private float limiteMuroIzq = -1000.0f;
+    private float limiteMuroDer = 1000.0f;
 
-    // Use this for initialization
     void Start()
     {
         //Conseguimos la bola
-        bola = GameObject.Find("BolaNormal");
+        Rigidbody2D d = (Rigidbody2D)Instantiate(bola, transform.position, transform.rotation);
+        bola = d;
+        bola.transform.Translate(Vector2.up * 3.0f);
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+
+        //Debug.Log(transform.position.y);
+
+        transform.position = new Vector2(transform.position.x, -6.5f);
+
         // Calculamos la anchura visible de la cámara en pantalla
         float distanciaHorizontal = Camera.main.orthographicSize * Screen.width / Screen.height;
 
@@ -39,22 +47,31 @@ public class ControlPlataforma : MonoBehaviour
         // Tecla: Izquierda
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            // Nos movemos a la izquierda hasta llegar al límite para entrar por el otro lado
-            if (transform.position.x > limiteIzq)
+            if (transform.position.x > limiteMuroIzq)
             {
-                transform.Translate(Vector2.left * velocidad * Time.deltaTime);
-                if (!iniciado)
+                // Nos movemos a la izquierda hasta llegar al límite para entrar por el otro lado
+                if (transform.position.x > limiteIzq)
                 {
-                    bola.transform.Translate(Vector2.left * velocidad * Time.deltaTime);
+                    transform.Translate(Vector2.left * velocidad * Time.deltaTime);
+                    if (!iniciado)
+                    {
+                        if (bola != null)
+                        {
+                            bola.transform.Translate(Vector2.left * velocidad * Time.deltaTime);
+                        }
+                    }
                 }
-            }
-            else
-            {
-                transform.position = new Vector2(limiteDer, transform.position.y);
-                if (!iniciado)
+                else
                 {
-                    bola.transform.position = new Vector2(limiteDer, transform.position.y);
-                    bola.transform.Translate(Vector2.up * 0.7f);
+                    transform.position = new Vector2(limiteDer, transform.position.y);
+                    if (!iniciado)
+                    {
+                        if (bola != null)
+                        {
+                            bola.transform.position = new Vector2(limiteDer, bola.position.y);
+                        }
+                    }
+
                 }
             }
         }
@@ -62,64 +79,94 @@ public class ControlPlataforma : MonoBehaviour
         // Tecla: Derecha
         if (Input.GetKey(KeyCode.RightArrow))
         {
-
-            // Nos movemos a la derecha hasta llegar al límite para entrar por el otro lado
-            if (transform.position.x < limiteDer)
+            if (transform.position.x < limiteMuroDer)
             {
-                transform.Translate(Vector2.right * velocidad * Time.deltaTime);
-                if (!iniciado)
+                // Nos movemos a la derecha hasta llegar al límite para entrar por el otro lado
+                if (transform.position.x < limiteDer)
                 {
-                    bola.transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+                    transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+                    if (!iniciado)
+                    {
+                        if (bola != null)
+                        {
+                            bola.transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+                        }
+                    }
                 }
-            }
-            else
-            {
-                transform.position = new Vector2(limiteIzq, transform.position.y);
-                if (!iniciado)
+                else
                 {
-                    bola.transform.position = new Vector2(limiteIzq, transform.position.y);
-                    bola.transform.Translate(Vector2.up * 0.7f);
-                    bola.AddForce(Vector2.up * fuerza, ForceMode2D.Impulse);
+                    transform.position = new Vector2(limiteIzq, transform.position.y);
+                    if (!iniciado)
+                    {
+                        if (bola != null)
+                        {
+                            bola.transform.position = new Vector2(limiteIzq, bola.position.y);
+                        }
+                    }
                 }
             }
         }
 
         
 
-        // Disparo
+        // Iniciar con la barra espaciadora
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            iniciar();
+            barraEspaciadora();
+        }
+
+        if (bola != null)
+        {
+            if (bola.transform.position.y < -8.0f)
+            {
+                Destroy(bola.gameObject);
+                bola = null;
+            }
         }
     }
 
-    void iniciar()
+    void barraEspaciadora()
     {
-        iniciado = true;
+        if (!iniciado) {
+            iniciado = true;
+            if (bola != null)
+            {
+                Destroy(bola.gameObject);
+                bola = null;
+            }
+            Rigidbody2D d = (Rigidbody2D)Instantiate(bolaConFisicas, transform.position, transform.rotation);
+            d.gravityScale = 0;
+            d.transform.Translate(Vector2.up * 1.0f);
+            //d.AddForce(Vector2.up * velocidadBola, ForceMode2D.Impulse);
+        }
+
+    }
+
+    void OnCollisionEnter2D(Collision2D coll)
+    {
+
+        // Necesitamos saber contra qué hemos chocado
+        if (coll.gameObject.tag == "BolaNormal")
+        {
+            if (!iniciado)
+            {
+                if (bola != null)
+                {
+                    if (numBotes < 3)
+                    {
+                        bola.AddForce(Vector2.up * fuerza, ForceMode2D.Impulse);
+                        fuerza = fuerza - 1f;
+                        numBotes++;
+                    }
+                }
+            }
+
+        }
+        else if (coll.gameObject.tag == "Bordes") 
+        { // Guardamos las coordenadas de los límites con los bordes independientemente de dónde estén
+            
+        }
         
-        // Desactivamos la gravedad de la Bola
-        //Rigidbody2d b = (Rigidbody2D)Instantiate(bola, transform.position, transform.rotation);
-        
-        // Lanzamos la Bola hacia arriba (contando con hacia donde estoy yendo)
-
-
-
-
-
-
-        /*
-        // Hacemos copias del prefab del disparo y las lanzamos
-        Rigidbody2D d = (Rigidbody2D)Instantiate(disparo, transform.position, transform.rotation);
-
-        // Desactivar la gravedad para este objeto, si no, ¡se cae!
-        d.gravityScale = 0;
-
-        // Posición de partida, en la punta de la nave
-        d.transform.Translate(Vector2.up * 0.7f);
-
-        // Lanzarlo
-        d.AddForce(Vector2.up * fuerza, ForceMode2D.Impulse);
-        */
     }
 
 }
