@@ -182,3 +182,5 @@ MonoBehaviour:
     type: 3}
   bolaConFisicas: {fileID: 6244603200749214742, guid: 442e44eb50042c640b49152c0c204c75,
     type: 3}
+  bolaConFisicasRemind: {fileID: 6244603200749214742, guid: 442e44eb50042c640b49152c0c204c75,
+    type: 3}

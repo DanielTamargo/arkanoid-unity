@@ -19,14 +19,14 @@ public class GeneradorBloques : MonoBehaviour
     private enum direccion { IZQ, DER };
 
     // Rumbo que lleva el pack de bloques
-    private direccion rumbo = direccion.DER;
+    //private direccion rumbo = direccion.DER;
 
     // Posición vertical de la horda (lo iremos restando de la .y de cada bloque)
-    private float altura = 0.5f;
+    //private float altura = 0.5f;
 
     // Límites de la pantalla
-    private float limiteIzq;
-    private float limiteDer;
+    //private float limiteIzq;
+    //private float limiteDer;
 
     // Velocidad a la que se desplazan los bloques (medido en u/s)
     //private float velocidad = 5f;
@@ -38,11 +38,11 @@ public class GeneradorBloques : MonoBehaviour
         generarBloques(FILAS, COLUMNAS, 4.0f, 2.0f);
 
         // Calculamos la anchura visible de la cámara en pantalla
-        float distanciaHorizontal = Camera.main.orthographicSize * Screen.width / Screen.height;
+        //float distanciaHorizontal = Camera.main.orthographicSize * Screen.width / Screen.height;
 
         // Calculamos el límite izquierdo y el derecho de la pantalla (añadimos una unidad a cada lado como margen)
-        limiteIzq = -1.0f * distanciaHorizontal + 1;
-        limiteDer = 1.0f * distanciaHorizontal - 1;
+        //limiteIzq = -1.0f * distanciaHorizontal + 1;
+        //limiteDer = 1.0f * distanciaHorizontal - 1;
     }
 
     // Update is called once per frame
@@ -52,7 +52,7 @@ public class GeneradorBloques : MonoBehaviour
         int numBloques = 0;
 
         // Variable para saber si al menos un bloque ha llegado al borde
-        bool limiteAlcanzado = false;
+        //bool limiteAlcanzado = false;
 
         // Recorremos la cuadricula de bloques
         for (int i = 0; i < FILAS; i++)
@@ -62,7 +62,7 @@ public class GeneradorBloques : MonoBehaviour
                 // Comprobamos que haya objeto, para cuando nos empiecen a disparar
                 if (bloques[i, j] != null)
                 {
-                    // Un alien más
+                    // Un bloque más
                     numBloques += 1;
 
                     /*// ¿Vamos a izquierda o derecha? //Los bloques no se mueven

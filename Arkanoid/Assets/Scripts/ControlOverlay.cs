@@ -7,31 +7,22 @@ public class ControlOverlay : MonoBehaviour
 {
     // Puntos ganados en la partida
     public int puntos = 0;
-    public int niveles = 1;
+    public int nivel = 1;
+    public int puntosPreNivel = 0;
 
     // Objeto donde mostramos el texto
-    public GameObject nivel;
-    public GameObject puntuacion;
+    public GameObject o_puntuacion;
+    public GameObject o_nivel;
 
-    private GameObject mantenerDatos;
-
-    private Text punt;
-    private Text niv;
+    private Text t_puntuacion;
+    private Text t_nivel;
 
     // Use this for initialization
     void Start()
     {
-
-        mantenerDatos = GameObject.Find("MatenerDatos(Clone)");
-        if (mantenerDatos != null) 
-        {
-            puntos = mantenerDatos.GetComponent<MantenerDatosScript>().puntuacionInicioNivel;
-            niveles = mantenerDatos.GetComponent<MantenerDatosScript>().nivel;
-        }
-
         // Localizamos el componente del UI
-        niv = nivel.GetComponent<Text>();
-        punt = puntuacion.GetComponent<Text>();
+        t_nivel = o_nivel.GetComponent<Text>();
+        t_puntuacion = o_puntuacion.GetComponent<Text>();
 
     }
 
@@ -39,7 +30,7 @@ public class ControlOverlay : MonoBehaviour
     void Update()
     {
         // Actualizamos el marcador
-        niv.text = "Nivel: " + niveles.ToString();
-        punt.text = "Puntos: " + puntos.ToString();
+        t_nivel.text = "Nivel: " + nivel.ToString();
+        t_puntuacion.text = "Puntos: " + puntos.ToString();
     }
 }

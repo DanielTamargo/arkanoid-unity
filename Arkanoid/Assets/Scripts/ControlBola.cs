@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ControlBola : MonoBehaviour
 {
 
-    public float speed = 13.0f;
+    public float speed = 1000.0f;
 
     private int numBloquesTotal = 0;
     private int bloquesGolpeados = 0;
