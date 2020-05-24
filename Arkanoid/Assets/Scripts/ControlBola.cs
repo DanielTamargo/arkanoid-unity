@@ -10,9 +10,13 @@ public class ControlBola : MonoBehaviour
     private int numBloquesTotal = 0;
     private int bloquesGolpeados = 0;
 
+    private GameObject overlay;
+
     // Start is called before the first frame update
     void Start()
     {
+        overlay = GameObject.FindGameObjectWithTag("Overlay");
+
         GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
 
         GameObject[] bloquesAzules = GameObject.FindGameObjectsWithTag("BloqueAzul");
@@ -48,6 +52,7 @@ public class ControlBola : MonoBehaviour
         if (collision.gameObject.tag == "BloqueAzul")
         {
             bloquesGolpeados += 1;
+            overlay.GetComponent<ControlOverlay>().puntos += 100;
         }
     }
 
