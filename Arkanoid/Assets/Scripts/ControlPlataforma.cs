@@ -7,14 +7,16 @@ public class ControlPlataforma : MonoBehaviour
     private bool iniciado = false;
     
     public Rigidbody2D bola;
+    public Rigidbody2D bolaRemind;
     public Rigidbody2D bolaConFisicas;
     
     private int numBotes = 0;
+    private int numToques = 0;
 
     // Velocidad a la que se desplaza la plataforma (medido en u/s)
     private float velocidad = 20f;
 
-    // Velocidad a la que se desplazan los aliens (medido en u/s)
+    // Velocidad a la que se desplazan la bola (medido en u/s)
     private float velocidadBola = 8f; //facil
 
     // Fuerza de lanzamiento del rebote
@@ -26,10 +28,28 @@ public class ControlPlataforma : MonoBehaviour
     void Start()
     {
         //Conseguimos la bola
+        //Rigidbody2D d = (Rigidbody2D)Instantiate(bola, transform.position, transform.rotation);
+        //bola = d;
+        //bola.transform.Translate(Vector2.up * 3.0f);
+    }
+
+    private void OnEnable()
+    {
         Rigidbody2D d = (Rigidbody2D)Instantiate(bola, transform.position, transform.rotation);
         bola = d;
         bola.transform.Translate(Vector2.up * 3.0f);
     }
+
+    private void OnDisable()
+    {
+        bola = bolaRemind;
+        iniciado = false;
+        numBotes = 0;
+        numToques = 0;
+        Destroy(bolaConFisicas.gameObject);
+        transform.position = new Vector2(0, -6.5f);
+    }
+
     void Update()
     {
 
@@ -127,7 +147,8 @@ public class ControlPlataforma : MonoBehaviour
 
     void barraEspaciadora()
     {
-        if (!iniciado) {
+        if (!iniciado)
+        {
             iniciado = true;
             if (bola != null)
             {
@@ -138,6 +159,16 @@ public class ControlPlataforma : MonoBehaviour
             d.gravityScale = 0;
             d.transform.Translate(Vector2.up * 1.0f);
             //d.AddForce(Vector2.up * velocidadBola, ForceMode2D.Impulse);
+        }
+        else 
+        {
+            Debug.Log("toque iniciado");
+            numToques++;
+            if (numToques >= 2)
+            {
+                this.enabled = false;
+                this.enabled = true;
+            }
         }
 
     }

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3309314695528629851}
   - component: {fileID: 3309314695528629850}
   - component: {fileID: 3309314695528629829}
-  - component: {fileID: 3309314695528629828}
   - component: {fileID: 8850524236624996355}
   - component: {fileID: 3463926341121733400}
+  - component: {fileID: 3309314695528629828}
   m_Layer: 0
   m_Name: Plataforma
   m_TagString: Untagged
@@ -133,21 +133,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.86946875, y: 0.24}
   m_EdgeRadius: 0
---- !u!114 &3309314695528629828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3309314695528629831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fc7916165e8f24ab793e7cff375ee9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bola: {fileID: 6244603200749214742, guid: bed262de4e7b0ba45a39d7b4f0380f7e, type: 3}
-  bolaConFisicas: {fileID: 6244603200749214742, guid: 442e44eb50042c640b49152c0c204c75,
-    type: 3}
 --- !u!58 &8850524236624996355
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -180,3 +165,20 @@ CircleCollider2D:
   m_Offset: {x: 0.44217387, y: -0.0012040138}
   serializedVersion: 2
   m_Radius: 0.07382277
+--- !u!114 &3309314695528629828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309314695528629831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50fc7916165e8f24ab793e7cff375ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bola: {fileID: 6244603200749214742, guid: bed262de4e7b0ba45a39d7b4f0380f7e, type: 3}
+  bolaRemind: {fileID: 6244603200749214742, guid: bed262de4e7b0ba45a39d7b4f0380f7e,
+    type: 3}
+  bolaConFisicas: {fileID: 6244603200749214742, guid: 442e44eb50042c640b49152c0c204c75,
+    type: 3}

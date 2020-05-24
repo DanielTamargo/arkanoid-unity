@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlBola : MonoBehaviour
 {
 
-    public float speed = 7.0f;
+    public float speed = 13.0f;
 
     private int numBloquesTotal = 0;
     private int bloquesGolpeados = 0;
@@ -15,7 +16,8 @@ public class ControlBola : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        overlay = GameObject.FindGameObjectWithTag("Overlay");
+        overlay = GameObject.Find("Overlay");
+       
 
         GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
 
@@ -29,7 +31,8 @@ public class ControlBola : MonoBehaviour
     {
         if (bloquesGolpeados >= numBloquesTotal) 
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("EscenaPrincipal");
+            DontDestroyOnLoad(overlay);
+            SceneManager.LoadScene("EscenaPrincipal");
         }
     }
 
