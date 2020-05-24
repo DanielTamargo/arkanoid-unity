@@ -12,7 +12,7 @@ public class GeneradorBloques : MonoBehaviour
     private Rigidbody2D[,] bloques;
 
     // Tamaño de la rejilla de bloques
-    private const int FILAS = 3;
+    private const int FILAS = 2;
     private const int COLUMNAS = 6;
 
     // Enumeración para expresar el sentido del movimiento
