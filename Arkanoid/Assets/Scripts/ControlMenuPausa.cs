@@ -26,12 +26,9 @@ public class ControlMenuPausa : MonoBehaviour
 
     public void CargarMenu()
     {
-        //Cargar el menú 
-        //SceneManager....LoadScene(.....);
-        
-        //descomenta esta línea
-        //Time.timeScale = 1f;
-        Debug.Log("Saliendo al menú... (falta mover a la escena)");
+        Time.timeScale = 1f;
+        Debug.Log("Saliendo al menú...");
+        SceneManager.LoadScene(0);
     }
 
     public void Salir()
@@ -41,11 +38,11 @@ public class ControlMenuPausa : MonoBehaviour
         if (UnityEditor.EditorApplication.isPlaying) {
             UnityEditor.EditorApplication.isPlaying = false;
         }
-
     }
 
     public void Reanudar()
     {
+        Debug.Log("Reanudando...");
         menuPausaUI.SetActive(false);
         Time.timeScale = 1f;
         JuegoPausado = false;

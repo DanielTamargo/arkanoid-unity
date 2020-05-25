@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &971593181812435855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3752075794933495769}
+  - component: {fileID: 910874918533075617}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3752075794933495769
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971593181812435855}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.3000002, z: 12}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &910874918533075617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971593181812435855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ec2e9199353cd4286389976111c87c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24300002, guid: 75906ad578ff80349bd7f462cd785f16, type: 2}
+  sonidos:
+  - nombre: bg_nivel_0
+    clip: {fileID: 8300000, guid: 227db86afa8ae224297c5dd1ee5b6d82, type: 3}
+    volume: 0.495
+    loop: 1
+    source: {fileID: 0}
+  - nombre: bg_nivel_1
+    clip: {fileID: 8300000, guid: 06bfe8555defc9e46ad5794ff1a2bb5e, type: 3}
+    volume: 0.844
+    loop: 1
+    source: {fileID: 0}
+  - nombre: bg_nivel_2
+    clip: {fileID: 8300000, guid: b3fc20e4d75b6c74ea58f48d88127105, type: 3}
+    volume: 1
+    loop: 1
+    source: {fileID: 0}
+  - nombre: bg_nivel_3
+    clip: {fileID: 8300000, guid: 1c4a44dea67953549ab2fc725e5c44d9, type: 3}
+    volume: 0.856
+    loop: 1
+    source: {fileID: 0}
+  - nombre: bg_nivel_4
+    clip: {fileID: 8300000, guid: eac6dc7e0c40e2543a0d52ced914e4ec, type: 3}
+    volume: 0.898
+    loop: 1
+    source: {fileID: 0}
+  - nombre: bg_especial
+    clip: {fileID: 8300000, guid: 82c217e3d56df0649a74589761baafc5, type: 3}
+    volume: 0.838
+    loop: 1
+    source: {fileID: 0}

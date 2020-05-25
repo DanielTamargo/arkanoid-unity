@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/OverlayScene.unity
-    guid: 8a5d2f7736f60794da9dfae504cc86ed
+    path: Assets/Scenes/Menu.unity
+    guid: 72601124114df874486c26a3f435e939
   - enabled: 1
     path: Assets/Scenes/EscenaPrincipal.unity
     guid: 5fb7f9e37e1adf449b87294e5c12fb94

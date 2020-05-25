@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FondoImagenMovimiento : MonoBehaviour
 {
-    float velocidadScroll = -5f;
+    public float velocidadScroll;
     public GameObject imagen;
     Vector3 pos;
 
@@ -20,7 +20,7 @@ public class FondoImagenMovimiento : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right * velocidadScroll * Time.deltaTime);
+        transform.Translate(Vector2.left * velocidadScroll * Time.deltaTime);
         if (transform.position.x <= -41) {
             pos = new Vector3(41, transform.position.y, transform.position.z);
             GameObject generar = (GameObject)Instantiate(imagen, pos, transform.rotation);

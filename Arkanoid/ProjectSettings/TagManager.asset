@@ -7,6 +7,7 @@ TagManager:
   - BolaNormal
   - Bordes
   - BloqueAzul
+  - Overlay
   layers:
   - Default
   - TransparentFX

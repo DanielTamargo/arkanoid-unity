@@ -6,19 +6,14 @@ using UnityEngine.SceneManagement;
 public class PasarAPrimerNivel : MonoBehaviour
 {
 
-    private GameObject overlay;
+    public GameObject overlay;
+    //private GameObject overlay;
 
-    // Start is called before the first frame update
     void Start()
     {
-        overlay = GameObject.Find("Overlay");
+        //overlay = GameObject.Find("Overlay");
         DontDestroyOnLoad(overlay);
-        SceneManager.LoadScene("EscenaPrincipal");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

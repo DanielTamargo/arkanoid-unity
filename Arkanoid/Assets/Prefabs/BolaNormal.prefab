@@ -134,3 +134,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12
+  efectoParticulasAzul: {fileID: 4575972188319194417, guid: ca0614b409b560f42b113296eaeffabf,
+    type: 3}
