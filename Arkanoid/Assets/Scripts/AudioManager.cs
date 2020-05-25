@@ -32,6 +32,16 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StopAll()
+    {
+        Debug.Log("Parando todos los sonidos para ir al menú...");
+        foreach (Sonido son in sonidos)
+        {
+            Sonido s = Array.Find(sonidos, sonido => sonido.nombre == son.nombre);
+            s.source.Stop();
+        }
+    }
+
     public void Stop(string nombre)
     {
         Sonido s = Array.Find(sonidos, sonido => sonido.nombre == nombre);

@@ -131,8 +131,8 @@ public class ControlPlataforma : MonoBehaviour
 
     void barraEspaciadora()
     {
-        Debug.Log(Screen.width);
-        Debug.Log(Screen.height);
+        //Debug.Log(Screen.width);
+        //Debug.Log(Screen.height);
         if (!iniciado)
         {
             iniciado = true;

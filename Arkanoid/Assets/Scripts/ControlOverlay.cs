@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -12,7 +13,10 @@ public class ControlOverlay : MonoBehaviour
     public int puntosPreNivel = 0;
     public int nivel = -1;
     public int vidas = 3;
-    private string nombreJugador = "Guest";
+    private string nombreJugador;
+
+    private bool loveEnMarcha = false;
+    private bool love = false;
 
     // Objeto donde mostramos el texto
     public GameObject o_puntuacion;
@@ -76,7 +80,7 @@ public class ControlOverlay : MonoBehaviour
         vidas -= 1;
         puntos = puntosPreNivel;
 
-        pararMusica();
+        //pararMusica();
 
         if (vidas <= 0)
         {
@@ -85,7 +89,7 @@ public class ControlOverlay : MonoBehaviour
             puntos = 0;
             puntosPreNivel = 0;
             nivel = -1;
-
+            FindObjectOfType<AudioManager>().StopAll();
             //TODO falta guardar registro en la BBDD
 
 
@@ -109,6 +113,9 @@ public class ControlOverlay : MonoBehaviour
 
     private void pararMusica()
     {
+        if (string.Equals(nombreJugador, "love", System.StringComparison.OrdinalIgnoreCase))
+            FindObjectOfType<AudioManager>().Stop("bg_especial");
+
         switch (nivel)
         {
             case 1:
@@ -124,6 +131,43 @@ public class ControlOverlay : MonoBehaviour
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_4");
                 break;
         }
+    }
+
+    public void configurarNombre()
+    {
+        nombreJugador = t_input_jugador.text;
+        if (nombreJugador.Length < 3)
+            nombreJugador = "Guest";
+        else if (nombreJugador.Length > 16)
+            nombreJugador = nombreJugador.Substring(0, 16);
+        t_jugador.text = nombreJugador.Trim();
+
+        if (nombreJugador.ToLower().CompareTo("love") == 1)
+        {
+            love = true;
+        }
+        /* Todos estos ifs (y más) no me funcionaban bien :) (: :) (: :) (: :) (:
+        if (nombreJugador.Trim().ToLower() == "love")
+        {
+            love = true;
+        }
+        if (nombreJugador.Equals("love", StringComparision.OrdinalIgnoreCase))
+        {
+            love = true;
+        }
+        if (nombreJugador.ToLower() == "love")
+        {
+            love = true;
+        }
+        if (nombreJugador.Equals("love"))
+        {
+            love = true;
+        }
+        if (nombreJugador is "love")
+        {
+            love = true;
+        }*/
+        pasarNivel();
     }
 
     public void pasarNivel()
@@ -143,46 +187,65 @@ public class ControlOverlay : MonoBehaviour
                 //Reproducir canción 1
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_0");
                 FindObjectOfType<AudioManager>().Play("bg_nivel_1");
-
-                //DontDestroyOnLoad(this);
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                ponerMusicaLove();
+                Debug.Log("Cargando nivel 1...");
+                DontDestroyOnLoad(this);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
-
             case 2:
                 //Parar canción 1
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_1");
                 FindObjectOfType<AudioManager>().Play("bg_nivel_2");
-
+                //ponerMusicaLove();
                 //Cargar escena nivel 2
+                Debug.Log("Cargando nivel 2...");
                 DontDestroyOnLoad(this);
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); //borrar esta y descomentar la de abajo
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
-
             case 3:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_2");
                 FindObjectOfType<AudioManager>().Play("bg_nivel_3");
-
+                //ponerMusicaLove();
                 //cargamos la escena
-
+                Debug.Log("Cargando nivel 3...");
+                DontDestroyOnLoad(this);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
             case 4:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_3");
                 FindObjectOfType<AudioManager>().Play("bg_nivel_4");
-
+                //ponerMusicaLove();
                 //cargamos la escena
+                Debug.Log("Cargando nivel 4...");
+                DontDestroyOnLoad(this);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
             case 5:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_4");
-                FindObjectOfType<AudioManager>().Play("bg_especial");
-                //guardar en la bbdd
-                //mostramos mensaje fin del juego
-                //nivel = -1
-                //pasarNivel();
+                //FindObjectOfType<AudioManager>().Play("bg_especial");
+                //ponerMusicaLove();
+                //TODO Falta guardar en la bbdd
+                //TODO falta mostrar mensaje fin del juego
+                nivel = -1;
+                puntos = 0;
+                puntosPreNivel = 0;
+                vidas = 3;
+                pasarNivel();
                 break;
-            default:
+        }
+    }
 
-                break;
+    void ponerMusicaLove()
+    {
+        if (love)
+        {
+            if (!loveEnMarcha)
+            {
+                Debug.Log("Eres Love? Eres Love! y... What is Love?");
+                loveEnMarcha = true;
+                pararMusica();
+                FindObjectOfType<AudioManager>().Play("bg_especial");
+            }
         }
     }
 

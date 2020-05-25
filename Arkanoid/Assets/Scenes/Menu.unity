@@ -1023,7 +1023,6 @@ MonoBehaviour:
   puntosPreNivel: 0
   nivel: -1
   vidas: 3
-  nombreJugador: Guest
   o_puntuacion: {fileID: 1769164378}
   o_nivel: {fileID: 1298922514}
   o_vidas: {fileID: 1951950683}
@@ -1652,7 +1651,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 721870125}
-        m_MethodName: pasarNivel
+        m_MethodName: configurarNombre
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
