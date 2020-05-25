@@ -12,11 +12,13 @@ public class ControlOverlay : MonoBehaviour
     public int puntosPreNivel = 0;
     public int nivel = -1;
     public int vidas = 3;
-    public string nombreJugador = "Guest";
+    private string nombreJugador = "Guest";
 
     // Objeto donde mostramos el texto
     public GameObject o_puntuacion;
     public GameObject o_nivel;
+    public GameObject o_vidas;
+    public GameObject o_jugador;
     public GameObject panel;
     public GameObject input_jugador;
 
@@ -31,7 +33,13 @@ public class ControlOverlay : MonoBehaviour
     public void test() 
     {
         Debug.Log(t_input_jugador.text);
-        pasarNivel();
+        nombreJugador = t_input_jugador.text;
+        if (nombreJugador.Length < 3)
+            nombreJugador = "Guest";
+        else if (nombreJugador.Length > 16)
+            nombreJugador = nombreJugador.Substring(0, 16);
+        t_jugador.text = nombreJugador;
+        //pasarNivel();
     }
 
     void Awake()
@@ -48,6 +56,8 @@ public class ControlOverlay : MonoBehaviour
         panel.SetActive(false);
         t_nivel = o_nivel.GetComponent<TextMeshProUGUI>();
         t_puntuacion = o_puntuacion.GetComponent<TextMeshProUGUI>();
+        t_vidas = o_vidas.GetComponent<TextMeshProUGUI>();
+        t_jugador = o_jugador.GetComponent<TextMeshProUGUI>();
         t_input_jugador = input_jugador.GetComponent<TextMeshProUGUI>();
         pasarNivel();
     }
@@ -57,6 +67,8 @@ public class ControlOverlay : MonoBehaviour
     {
         t_nivel.text = "Nivel: " + nivel.ToString();
         t_puntuacion.text = "Puntos: " + puntos.ToString();
+        t_vidas.text = "Vidas: " + vidas.ToString();
+        //t_jugador.text = nombreJugador;
     }
 
     public void intentoFallido()
