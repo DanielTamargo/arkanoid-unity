@@ -6,7 +6,7 @@ public class ControlBloqueAzul : MonoBehaviour
 {
 
     public GameObject efectoParticulasAzul;
-    public int tipo = 1; //1 = Azul, 2 = Morado, 3 = Rojo, 4 = Amarillo
+    public int tipo = 1; //1 = Azul, 2 = Morado, 3 = Rojo, 4 = Verde
 
 
     // El "jefe final" se mueve
@@ -52,10 +52,37 @@ public class ControlBloqueAzul : MonoBehaviour
             Destroy(gameObject);
         } else
         {
+            agrietarBloque();
             FindObjectOfType<AudioManager>().Play("sfx_impact_1");
         }
         return (vidas <= 0);
     }
+
+    // Agrietamos el bloque según vaya recibiendo golpes (en caso de tener más de 1 golpe de vida)
+    private void agrietarBloque()
+    {
+        //1 = Azul, 2 = Morado, 3 = Rojo, 4 = Verde
+        if (tipo == 2)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("purple_1");
+        } else if (tipo == 3)
+        {
+            if (vidas == 2)
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("red_1");
+            else
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("red_2");
+        } else
+        {
+            if (vidas == 6)
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("green_1");
+            else if (vidas == 4)
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("green_2");
+            else if (vidas == 2)
+                this.gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("green_3");
+        }
+
+    }
+
 
     // Cambiamos rumbo del boss
     private void OnCollisionEnter2D(Collision2D collision)
