@@ -130,3 +130,8 @@ MonoBehaviour:
     volume: 1
     loop: 0
     source: {fileID: 0}
+  - nombre: sfx_impact_1
+    clip: {fileID: 8300000, guid: 60fd9478810893846a4ea568fad80e3d, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}

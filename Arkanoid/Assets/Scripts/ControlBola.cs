@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class ControlBola : MonoBehaviour
 {
 
-    public float speed = 1000.0f;
+    public int nivel = 1;
+    private float speed = 9.0f;
+
 
     private int numBloquesTotal = 0;
     private int bloquesGolpeados = 0;
@@ -28,8 +30,24 @@ public class ControlBola : MonoBehaviour
 
         GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
 
+        nivel = overlay.GetComponent<ControlOverlay>().nivel;
+        actualizarVelocidad();
         GameObject[] bloquesAzules = GameObject.FindGameObjectsWithTag("BloqueAzul");
         numBloquesTotal += bloquesAzules.Length;
+    }
+
+    void actualizarVelocidad()
+    {
+        if (nivel == 1)
+            speed = 9.0f;
+        else if (nivel == 2)
+            speed = 11.0f;
+        else if (nivel == 3)
+            speed = 12.0f;
+        else
+            speed = 13.0f;
+
+        GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
     }
 
     // Update is called once per frame

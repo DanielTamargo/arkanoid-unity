@@ -6,8 +6,37 @@ public class ControlBloqueAzul : MonoBehaviour
 {
 
     public GameObject efectoParticulasAzul;
+    public int tipo = 1; //1 = Azul, 2 = Morado, 3 = Rojo, 4 = Amarillo
 
-    private int vidas = 1;
+
+    // El "jefe final" se mueve
+    private float velocidad = 5f;
+    private enum direccion { IZQ, DER };
+    private direccion rumbo = direccion.DER;
+
+    private int vidas;
+    void Start()
+    {
+        if (tipo == 1)
+            vidas = 1;
+        else if (tipo == 2)
+            vidas = 2;
+        else if (tipo == 3)
+            vidas = 3;
+        else
+            vidas = 8;
+    }
+
+    private void Update()
+    {
+        if (tipo == 4)
+        {
+            if (rumbo == direccion.DER)
+                transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+            else
+                transform.Translate(Vector2.left * velocidad * Time.deltaTime);
+        }
+    }
 
     // Devuelve true si el bloque ha explotado
     // Sirve para que la bola se de cuenta de que lo ha roto y sume los puntos
@@ -21,8 +50,26 @@ public class ControlBloqueAzul : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("sfx_exp_short");
             Instantiate(efectoParticulasAzul, transform.position, Quaternion.identity);
             Destroy(gameObject);
+        } else
+        {
+            FindObjectOfType<AudioManager>().Play("sfx_impact_1");
         }
         return (vidas <= 0);
+    }
+
+    // Cambiamos rumbo del boss
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (tipo == 4)
+        {
+            if (collision.gameObject.tag != "BolaNormal")
+            {
+                if (rumbo == direccion.DER)
+                    rumbo = direccion.IZQ;
+                else
+                    rumbo = direccion.DER;
+            }
+        }
     }
 
 }

@@ -9,6 +9,12 @@ public class ControlMenuPausa : MonoBehaviour
     public GameObject menuPausaUI;
 
 
+    private void Start()
+    {
+        //por posibles bugs que hayan pasado en algún nivel
+        Time.timeScale = 1f;
+    }
+
     // Update is called once per frame
     void Update()
     {
