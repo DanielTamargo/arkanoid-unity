@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ControlBola : MonoBehaviour
 {
-
     public int nivel = 1;
-    private float speed = 9.0f;
+    private float speed = 12.0f;
 
 
     private int numBloquesTotal = 0;
@@ -19,7 +18,7 @@ public class ControlBola : MonoBehaviour
 
     public GameObject efectoExplosion;
     private bool slowmo = false;
-    private bool gameOver = false;
+    private bool r2d2 = false;
 
     private GameObject overlay;
 
@@ -39,13 +38,13 @@ public class ControlBola : MonoBehaviour
     void actualizarVelocidad()
     {
         if (nivel == 1)
-            speed = 9.0f;
+            speed = 10.0f;
         else if (nivel == 2)
-            speed = 11.0f;
-        else if (nivel == 3)
             speed = 12.0f;
+        else if (nivel == 3)
+            speed = 14.0f;
         else
-            speed = 13.0f;
+            speed = 16.0f;
 
         GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
     }
@@ -112,7 +111,7 @@ public class ControlBola : MonoBehaviour
                 {
                     StartCoroutine(comboWooho());
                 }
-                else if (golpesSeguidos == 5)
+                else if (golpesSeguidos >= 5)
                 {
                     StartCoroutine(comboR2D2());
                 }
@@ -198,12 +197,17 @@ public class ControlBola : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         slowmo = true;
-        FindObjectOfType<AudioManager>().Play("sfx_combo_3");
+        if (!r2d2)
+        {
+            FindObjectOfType<AudioManager>().Play("sfx_combo_3");
+            r2d2 = true;
+        }
         yield return new WaitForSeconds(0.8f);
         FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
         yield return new WaitForSeconds(0.2f);
         Time.timeScale = 1f;
         slowmo = false;
+        r2d2 = false;
     }
 
 

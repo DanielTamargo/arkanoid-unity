@@ -135,7 +135,6 @@ public class GeneradorBloques : MonoBehaviour
 
     void generarBloquesNivel4(int filas, int columnas, float espacioH, float espacioV, float escala = 1.0f)
     {
-        bool fila1 = false;
         Vector2 origen = new Vector2(transform.position.x - (columnas / 2.0f) * espacioH + (espacioH / 2), transform.position.y);
         bloques = new Rigidbody2D[filas, columnas];
         for (int i = 0; i < filas; i++)
