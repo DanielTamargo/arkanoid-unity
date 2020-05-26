@@ -85,10 +85,14 @@ public class ControlOverlay : MonoBehaviour
 
     public void intentoFallido()
     {
-        vidas -= 1;
+        if (vidas > 0)
+        {
+            vidas -= 1;
+            o_vidas.SetActive(false);
+            o_vidas.SetActive(true);
+        }
+        
         puntos = puntosPreNivel;
-        o_vidas.SetActive(false);
-        o_vidas.SetActive(true);
         //pararMusica();
 
         if (vidas <= 0)
@@ -101,7 +105,7 @@ public class ControlOverlay : MonoBehaviour
             FindObjectOfType<AudioManager>().StopAll();
             //TODO falta guardar registro en la BBDD
 
-            FindObjectOfType<AudioManager>().Play("sfx_lose");
+            //FindObjectOfType<AudioManager>().Play("sfx_lose");
 
             pasarNivel();
         } else
@@ -111,6 +115,12 @@ public class ControlOverlay : MonoBehaviour
         }
     }
 
+    public void animacionVidas()
+    {
+        vidas -= 1;
+        o_vidas.SetActive(false);
+        o_vidas.SetActive(true);
+    }
 
     public void animacion(int anim)
     {
@@ -224,10 +234,12 @@ public class ControlOverlay : MonoBehaviour
                 panel.SetActive(false);
                 FindObjectOfType<AudioManager>().Play("bg_nivel_0");
                 if (SceneManager.GetActiveScene().buildIndex != 0)
+                {
+                    DontDestroyOnLoad(this);
                     SceneManager.LoadScene(0);
+                }
                 break;
             case 1:
-                //Reproducir canción 1
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_0");
                 FindObjectOfType<AudioManager>().Play("bg_nivel_1");
                 ponerMusicaLove();
@@ -236,39 +248,34 @@ public class ControlOverlay : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
             case 2:
-                //Parar canción 1
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_1");
                 FindObjectOfType<AudioManager>().Play("bg_nivel_2");
-                //ponerMusicaLove();
-                //Cargar escena nivel 2
+
                 Debug.Log("Cargando nivel 2...");
                 DontDestroyOnLoad(this);
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
             case 3:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_2");
                 FindObjectOfType<AudioManager>().Play("bg_nivel_3");
-                //ponerMusicaLove();
-                //cargamos la escena
+
                 Debug.Log("Cargando nivel 3...");
                 DontDestroyOnLoad(this);
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
             case 4:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_3");
                 FindObjectOfType<AudioManager>().Play("bg_nivel_4");
-                //ponerMusicaLove();
-                //cargamos la escena
+
                 Debug.Log("Cargando nivel 4...");
                 DontDestroyOnLoad(this);
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
             case 5:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_4");
-                //FindObjectOfType<AudioManager>().Play("bg_especial");
-                //ponerMusicaLove();
+
                 //TODO Falta guardar en la bbdd
-                //TODO falta mostrar mensaje fin del juego
+                //Reseteamos datos
                 nivel = -1;
                 puntos = 0;
                 puntosPreNivel = 0;

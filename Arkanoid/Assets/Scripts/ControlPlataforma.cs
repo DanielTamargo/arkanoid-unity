@@ -34,7 +34,7 @@ public class ControlPlataforma : MonoBehaviour
 
     void Update()
     {
-
+        float tecladoHorizontal = Input.GetAxisRaw("Horizontal");
         //Debug.Log(transform.position.y);
 
         transform.position = new Vector2(transform.position.x, -6.5f);
@@ -47,7 +47,8 @@ public class ControlPlataforma : MonoBehaviour
         float limiteDer = 1.0f * distanciaHorizontal;
 
         // Tecla: Izquierda
-        if (Input.GetKey(KeyCode.LeftArrow))
+        
+        if (tecladoHorizontal < 0)
         {
             if (transform.position.x > limiteMuroIzq)
             {
@@ -79,7 +80,7 @@ public class ControlPlataforma : MonoBehaviour
         }
 
         // Tecla: Derecha
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (tecladoHorizontal > 0)
         {
             if (transform.position.x < limiteMuroDer)
             {

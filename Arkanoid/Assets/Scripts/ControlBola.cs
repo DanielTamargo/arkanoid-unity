@@ -17,6 +17,7 @@ public class ControlBola : MonoBehaviour
 
     public GameObject efectoExplosion;
     private bool slowmo = false;
+    private bool gameOver = false;
 
     private GameObject overlay;
 
@@ -38,8 +39,13 @@ public class ControlBola : MonoBehaviour
         if (transform.position.y <= -11f && !nivelSuperado) 
         {
             if (!nivelFallido)
-                overlay.GetComponent<ControlOverlay>().intentoFallido();
-
+            {
+                if(overlay.GetComponent<ControlOverlay>().vidas <= 1)
+                    StartCoroutine(animacionLose());
+                else
+                    overlay.GetComponent<ControlOverlay>().intentoFallido();
+            }
+                
             nivelFallido = true;
         }
 
@@ -74,43 +80,52 @@ public class ControlBola : MonoBehaviour
         if (collision.gameObject.tag == "BloqueAzul")
         {
             golpesSeguidos += 1;
-            bloquesGolpeados += 1;
-            overlay.GetComponent<ControlOverlay>().puntos += 100 * golpesSeguidos;
-            //Instantiate(efectoExplosion, collision.transform.position, Quaternion.identity);
-            if (golpesSeguidos == 3)
+            bool bloqueMuere = collision.gameObject.GetComponent<ControlBloqueAzul>().bloqueMuere();
+            if (bloqueMuere)
             {
-                StartCoroutine(comboYouRock());
+                bloquesGolpeados += 1;
+                overlay.GetComponent<ControlOverlay>().puntos += 100 * golpesSeguidos;
+                //Instantiate(efectoExplosion, collision.transform.position, Quaternion.identity);
+                if (golpesSeguidos == 3)
+                {
+                    StartCoroutine(comboYouRock());
+                }
+                else if (golpesSeguidos == 4)
+                {
+                    StartCoroutine(comboWooho());
+                }
+                else if (golpesSeguidos == 5)
+                {
+                    StartCoroutine(comboR2D2());
+                }
+                if (bloquesGolpeados >= numBloquesTotal)
+                {
+                    Instantiate(efectoExplosion, collision.transform.position, Quaternion.identity);
+                    FindObjectOfType<AudioManager>().Play("sfx_exp_long");
+                    nivelSuperado = true;
+                    StartCoroutine(animacionWin());
+                }
             }
-            else if (golpesSeguidos == 4)
-            {
-                StartCoroutine(comboWooho());
-            }
-            else if (golpesSeguidos == 5)
-            {
-                StartCoroutine(comboR2D2());
-            }
-            if (bloquesGolpeados >= numBloquesTotal)
-            {
-                Instantiate(efectoExplosion, collision.transform.position, Quaternion.identity);
-                FindObjectOfType<AudioManager>().Play("sfx_exp_long");
-                nivelSuperado = true;
-                StartCoroutine(animacionWin());
-            }
+            
         }
     }
 
     IEnumerator animacionLose()
     {
+        overlay.GetComponent<ControlOverlay>().animacionVidas();
         FindObjectOfType<AudioManager>().Play("sfx_lose");
         overlay.GetComponent<ControlOverlay>().animacion(0);
         yield return new WaitForSeconds(3);
-        overlay.GetComponent<ControlOverlay>().pasarNivel();
+        overlay.GetComponent<ControlOverlay>().intentoFallido();
     }
 
     IEnumerator animacionWin()
     {
         FindObjectOfType<AudioManager>().Play("sfx_win");
-        overlay.GetComponent<ControlOverlay>().animacion(1);
+        if (overlay.GetComponent<ControlOverlay>().nivel == 4)
+            overlay.GetComponent<ControlOverlay>().animacion(2);
+        else
+            overlay.GetComponent<ControlOverlay>().animacion(1);
         yield return new WaitForSeconds(3);
         overlay.GetComponent<ControlOverlay>().pasarNivel();
     }
@@ -166,7 +181,7 @@ public class ControlBola : MonoBehaviour
         }
         slowmo = true;
         FindObjectOfType<AudioManager>().Play("sfx_combo_3");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.8f);
         FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
         yield return new WaitForSeconds(0.2f);
         Time.timeScale = 1f;

@@ -7,14 +7,10 @@ using UnityEngine.SceneManagement;
 public class ControlMainMenu : MonoBehaviour
 {
 
-    void Start()
-    {
-        
-    }
-
     public void Jugar()
     {
-        
+        GameObject overlay = GameObject.Find("Overlay");
+        overlay.GetComponent<ControlOverlay>().pasarNivel();
     }
 
     public void Salir()
