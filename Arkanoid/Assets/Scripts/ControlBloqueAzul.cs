@@ -6,6 +6,7 @@ public class ControlBloqueAzul : MonoBehaviour
 {
 
     public GameObject efectoParticulasAzul;
+    public GameObject efectoParticulasMini;
     public int tipo = 1; //1 = Azul, 2 = Morado, 3 = Rojo, 4 = Verde
 
 
@@ -53,6 +54,7 @@ public class ControlBloqueAzul : MonoBehaviour
         } else
         {
             agrietarBloque();
+            Instantiate(efectoParticulasMini, transform.position, Quaternion.identity);
             FindObjectOfType<AudioManager>().Play("sfx_impact_1");
         }
         return (vidas <= 0);

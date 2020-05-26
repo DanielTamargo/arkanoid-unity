@@ -47,9 +47,9 @@ public class ControlPlataforma : MonoBehaviour
         float limiteDer = 1.0f * distanciaHorizontal;
 
         // Tecla: Izquierda
-        
         if (tecladoHorizontal < 0)
         {
+
             if (transform.position.x > limiteMuroIzq)
             {
                 // Nos movemos a la izquierda hasta llegar al límite para entrar por el otro lado

@@ -145,4 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   efectoParticulasAzul: {fileID: 4575972188319194417, guid: ca0614b409b560f42b113296eaeffabf,
     type: 3}
+  efectoParticulasMini: {fileID: 5146377385042835104, guid: afc36e5bed5ba484cb8a69b3924b7716,
+    type: 3}
   tipo: 3
