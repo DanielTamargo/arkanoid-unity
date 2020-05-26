@@ -143,3 +143,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d162806aaa26c98468a22880d7a94494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  efectoParticulasAzul: {fileID: 4575972188319194417, guid: ca0614b409b560f42b113296eaeffabf,
+    type: 3}

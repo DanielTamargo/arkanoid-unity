@@ -16,9 +16,11 @@ public class ControlMenuPausa : MonoBehaviour
         {
             if (JuegoPausado)
             {
+                FindObjectOfType<AudioManager>().Play("sfx_pause_out");
                 Reanudar();
             } else
             {
+                FindObjectOfType<AudioManager>().Play("sfx_pause_in");
                 Pausar();
             }
         }

@@ -15,8 +15,8 @@ public class ControlBola : MonoBehaviour
     private bool nivelFallido = false;
     private bool nivelSuperado = false;
 
-    public GameObject efectoParticulasAzul;
-
+    public GameObject efectoExplosion;
+    private bool slowmo = false;
 
     private GameObject overlay;
 
@@ -25,12 +25,10 @@ public class ControlBola : MonoBehaviour
     {
         overlay = GameObject.Find("Overlay");
 
-
         GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
 
         GameObject[] bloquesAzules = GameObject.FindGameObjectsWithTag("BloqueAzul");
         numBloquesTotal += bloquesAzules.Length;
-
     }
 
     // Update is called once per frame
@@ -50,19 +48,9 @@ public class ControlBola : MonoBehaviour
             if (!nivelSuperado)
             {
                 nivelSuperado = true;
-                StartCoroutine(animacionFinal());
+                StartCoroutine(animacionWin());
             }
         }
-    }
-
-    IEnumerator animacionFinal()
-    {
-        //animacion explosion  //poner un sonido
-
-        //esperar a que el sonido acabe
-        yield return new WaitForSeconds(4);
-
-        overlay.GetComponent<ControlOverlay>().pasarNivel();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -88,42 +76,101 @@ public class ControlBola : MonoBehaviour
             golpesSeguidos += 1;
             bloquesGolpeados += 1;
             overlay.GetComponent<ControlOverlay>().puntos += 100 * golpesSeguidos;
-            Instantiate(efectoParticulasAzul, collision.transform.position, Quaternion.identity);
+            //Instantiate(efectoExplosion, collision.transform.position, Quaternion.identity);
             if (golpesSeguidos == 3)
             {
                 StartCoroutine(comboYouRock());
-            } else if (golpesSeguidos == 4)
+            }
+            else if (golpesSeguidos == 4)
             {
                 StartCoroutine(comboWooho());
-            } else if (golpesSeguidos == 5)
+            }
+            else if (golpesSeguidos == 5)
             {
                 StartCoroutine(comboR2D2());
+            }
+            if (bloquesGolpeados >= numBloquesTotal)
+            {
+                Instantiate(efectoExplosion, collision.transform.position, Quaternion.identity);
+                FindObjectOfType<AudioManager>().Play("sfx_exp_long");
+                nivelSuperado = true;
+                StartCoroutine(animacionWin());
             }
         }
     }
 
+    IEnumerator animacionLose()
+    {
+        FindObjectOfType<AudioManager>().Play("sfx_lose");
+        overlay.GetComponent<ControlOverlay>().animacion(0);
+        yield return new WaitForSeconds(3);
+        overlay.GetComponent<ControlOverlay>().pasarNivel();
+    }
+
+    IEnumerator animacionWin()
+    {
+        FindObjectOfType<AudioManager>().Play("sfx_win");
+        overlay.GetComponent<ControlOverlay>().animacion(1);
+        yield return new WaitForSeconds(3);
+        overlay.GetComponent<ControlOverlay>().pasarNivel();
+    }
+
     IEnumerator comboYouRock()
     {
-        //falta sonido you rock
-        Time.timeScale = 0.75f;
-        yield return new WaitForSeconds(1);
-        Time.timeScale = 1f;
+        Time.timeScale = 0.65f;
+        if (!slowmo)
+        {
+            FindObjectOfType<AudioManager>().Play("sfx_slowmo");
+            yield return new WaitForSeconds(0.2f);
+        }
+        slowmo = true;
+        
+        FindObjectOfType<AudioManager>().Play("sfx_combo_1");
+        yield return new WaitForSeconds(1.5f);
+        if (golpesSeguidos <= 3)
+        {
+            FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
+            yield return new WaitForSeconds(0.2f);
+            Time.timeScale = 1f;
+            slowmo = false;
+        }
     }
 
     IEnumerator comboWooho()
     {
-        //falta sonido wooho
-        Time.timeScale = 0.5f;
-        yield return new WaitForSeconds(1);
-        Time.timeScale = 1f;
+        Time.timeScale = 0.4f;
+        if (!slowmo)
+        {
+            FindObjectOfType<AudioManager>().Play("sfx_slowmo");
+            yield return new WaitForSeconds(0.2f);
+        }
+        slowmo = true;
+        FindObjectOfType<AudioManager>().Play("sfx_combo_2");
+        yield return new WaitForSeconds(1.5f);
+        if (golpesSeguidos <= 4)
+        {
+            FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
+            yield return new WaitForSeconds(0.2f);
+            Time.timeScale = 1f;
+            slowmo = false;
+        }
     }
 
     IEnumerator comboR2D2()
     {
-        //falta sonido waaaaaaaaaaaaaAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHHHHHH!!!
         Time.timeScale = 0.25f;
-        yield return new WaitForSeconds(1);
+        if (!slowmo)
+        {
+            FindObjectOfType<AudioManager>().Play("sfx_slowmo");
+            yield return new WaitForSeconds(0.2f);
+        }
+        slowmo = true;
+        FindObjectOfType<AudioManager>().Play("sfx_combo_3");
+        yield return new WaitForSeconds(1.5f);
+        FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
+        yield return new WaitForSeconds(0.2f);
         Time.timeScale = 1f;
+        slowmo = false;
     }
 
 

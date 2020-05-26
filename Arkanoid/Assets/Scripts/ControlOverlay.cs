@@ -26,6 +26,10 @@ public class ControlOverlay : MonoBehaviour
     public GameObject panel;
     public GameObject input_jugador;
 
+    public GameObject o_gameover;
+    public GameObject o_nivelsuperado;
+    public GameObject o_hasganado;
+
     private TextMeshProUGUI t_puntuacion;
     private TextMeshProUGUI t_nivel;
     private TextMeshProUGUI t_vidas;
@@ -34,16 +38,20 @@ public class ControlOverlay : MonoBehaviour
 
     public static ControlOverlay instance;
 
+    private bool activo = false;
+
     public void test() 
     {
-        Debug.Log(t_input_jugador.text);
-        nombreJugador = t_input_jugador.text;
-        if (nombreJugador.Length < 3)
-            nombreJugador = "Guest";
-        else if (nombreJugador.Length > 16)
-            nombreJugador = nombreJugador.Substring(0, 16);
-        t_jugador.text = nombreJugador;
-        //pasarNivel();
+        if (!activo)
+        {
+            panel.SetActive(true);
+            StartCoroutine(animacionNivelSuperado());
+            activo = true;
+        }
+        else
+        {
+            intentoFallido();
+        }
     }
 
     void Awake()
@@ -79,7 +87,8 @@ public class ControlOverlay : MonoBehaviour
     {
         vidas -= 1;
         puntos = puntosPreNivel;
-
+        o_vidas.SetActive(false);
+        o_vidas.SetActive(true);
         //pararMusica();
 
         if (vidas <= 0)
@@ -92,6 +101,7 @@ public class ControlOverlay : MonoBehaviour
             FindObjectOfType<AudioManager>().StopAll();
             //TODO falta guardar registro en la BBDD
 
+            FindObjectOfType<AudioManager>().Play("sfx_lose");
 
             pasarNivel();
         } else
@@ -99,6 +109,39 @@ public class ControlOverlay : MonoBehaviour
             DontDestroyOnLoad(this);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+
+    public void animacion(int anim)
+    {
+        if (anim == 0)
+            StartCoroutine(animacionGameOver());
+        else if (anim == 1)
+            StartCoroutine(animacionNivelSuperado());
+        else
+            StartCoroutine(animacionHasGanado());
+
+    }
+
+    IEnumerator animacionGameOver()
+    {
+        o_gameover.SetActive(true);
+        yield return new WaitForSeconds(3);
+        o_gameover.SetActive(false);
+    }
+
+    IEnumerator animacionNivelSuperado()
+    {
+        o_nivelsuperado.SetActive(true);
+        yield return new WaitForSeconds(3);
+        o_nivelsuperado.SetActive(false);
+    }
+
+    IEnumerator animacionHasGanado()
+    {
+        o_hasganado.SetActive(true);
+        yield return new WaitForSeconds(3);
+        o_hasganado.SetActive(false);
     }
 
     public void mostrarPanel()

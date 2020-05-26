@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ControlBloqueAzul : MonoBehaviour
 {
+
+    public GameObject efectoParticulasAzul;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +26,9 @@ public class ControlBloqueAzul : MonoBehaviour
         // Necesitamos saber contra qué hemos chocado
         if (coll.gameObject.tag == "BolaNormal")
         {
+            FindObjectOfType<AudioManager>().Play("sfx_exp_short");
+            Instantiate(efectoParticulasAzul, transform.position, Quaternion.identity);
             Destroy(gameObject);
-
         }
 
 
