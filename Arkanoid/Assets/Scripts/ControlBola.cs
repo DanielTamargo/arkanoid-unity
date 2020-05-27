@@ -12,6 +12,8 @@ public class ControlBola : MonoBehaviour
     private int numBloquesTotal = 0;
     private int bloquesGolpeados = 0;
     private int golpesSeguidos = 0;
+    private int golpesBordesSeguidos = 0;
+
 
     private bool nivelFallido = false;
     private bool nivelSuperado = false;
@@ -62,7 +64,10 @@ public class ControlBola : MonoBehaviour
                 if(overlay.GetComponent<ControlOverlay>().vidas <= 1)
                     StartCoroutine(animacionLose());
                 else
+                {
+                    FindObjectOfType<AudioManager>().Play("sfx_fall");
                     overlay.GetComponent<ControlOverlay>().intentoFallido();
+                }
             }
                 
             nivelFallido = true;
@@ -84,6 +89,7 @@ public class ControlBola : MonoBehaviour
         {
             // Reseteamos los golpes seguidos
             golpesSeguidos = 0;
+            golpesBordesSeguidos = 0;
 
             // Calculamos el golpe
             float x = calcularGolpe(transform.position,
@@ -98,12 +104,22 @@ public class ControlBola : MonoBehaviour
         }
         if (collision.gameObject.tag == "BloqueAzul")
         {
+            int puntosBloque = 100;
+            if (collision.gameObject.name == "prefabBloqueMorado(Clone)")
+                puntosBloque = 150;
+            else if (collision.gameObject.name == "prefabBloqueRojo(Clone)")
+                puntosBloque = 200;
+            else if (collision.gameObject.name == "prefabBloqueVerde(Clone)")
+                puntosBloque = 300;
+
+
             golpesSeguidos += 1;
+            golpesBordesSeguidos = 0;
             bool bloqueMuere = collision.gameObject.GetComponent<ControlBloqueAzul>().bloqueMuere();
             if (bloqueMuere)
             {
                 bloquesGolpeados += 1;
-                overlay.GetComponent<ControlOverlay>().puntos += 100 * golpesSeguidos;
+                overlay.GetComponent<ControlOverlay>().puntos += puntosBloque * golpesSeguidos;
                 //Instantiate(efectoExplosion, collision.transform.position, Quaternion.identity);
                 if (golpesSeguidos == 3)
                 {
@@ -126,6 +142,18 @@ public class ControlBola : MonoBehaviour
                 }
             }
             
+        }
+        else if (collision.gameObject.tag == "Bordes")
+        {
+            golpesBordesSeguidos += 1;
+            if (golpesBordesSeguidos >= 10)
+            {
+                // Calculamos la dirección, hacemos set length hasta 1
+                Vector2 dir = new Vector2(transform.position.x, -1).normalized;
+
+                // Cofiguramos la Velocity con dir * speed
+                GetComponent<Rigidbody2D>().velocity = dir * speed;
+            }
         }
     }
 

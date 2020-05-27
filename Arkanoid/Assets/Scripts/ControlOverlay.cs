@@ -18,7 +18,7 @@ public class ControlOverlay : MonoBehaviour
     private bool loveEnMarcha = false;
     private bool love = false;
 
-    // Objeto donde mostramos el texto
+    // Textos HUD
     public GameObject o_puntuacion;
     public GameObject o_nivel;
     public GameObject o_vidas;
@@ -26,9 +26,17 @@ public class ControlOverlay : MonoBehaviour
     public GameObject panel;
     public GameObject input_jugador;
 
+    // Textos niveles superados / fallidos
     public GameObject o_gameover;
     public GameObject o_nivelsuperado;
     public GameObject o_hasganado;
+
+    // Textos cuenta atrás comenzar nivel en móvil
+    public GameObject o_tocaParaEmpezar;
+    public GameObject o_3;
+    public GameObject o_2;
+    public GameObject o_1;
+    public GameObject o_go;
 
     private TextMeshProUGUI t_puntuacion;
     private TextMeshProUGUI t_nivel;
@@ -38,20 +46,40 @@ public class ControlOverlay : MonoBehaviour
 
     public static ControlOverlay instance;
 
-    private bool activo = false;
+    private int testeito = 0;
 
     public void test() 
     {
-        if (!activo)
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            panel.SetActive(true);
-            StartCoroutine(animacionNivelSuperado());
-            activo = true;
+            if (testeito == 0)
+                o_tocaParaEmpezar.SetActive(true);
+            else
+            {
+                o_tocaParaEmpezar.SetActive(false);
+                StartCoroutine(animacionComenzarPartida());
+            }
+
+            testeito++;
         }
-        else
-        {
-            intentoFallido();
-        }
+
+    }
+
+    IEnumerator animacionComenzarPartida()
+    {
+        o_tocaParaEmpezar.SetActive(false);
+        o_3.SetActive(true);
+        yield return new WaitForSeconds(1);
+        o_3.SetActive(false);
+        o_2.SetActive(true);
+        yield return new WaitForSeconds(1);
+        o_2.SetActive(false);
+        o_1.SetActive(true);
+        yield return new WaitForSeconds(1);
+        o_1.SetActive(false);
+        o_go.SetActive(true);
+        yield return new WaitForSeconds(1);
+        o_go.SetActive(false);
     }
 
     void Awake()

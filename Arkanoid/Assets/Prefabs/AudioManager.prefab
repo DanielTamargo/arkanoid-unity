@@ -135,3 +135,8 @@ MonoBehaviour:
     volume: 1
     loop: 0
     source: {fileID: 0}
+  - nombre: sfx_fall
+    clip: {fileID: 8300000, guid: b6d34af55a3f2e3408abe00373c38da0, type: 3}
+    volume: 1
+    loop: 0
+    source: {fileID: 0}

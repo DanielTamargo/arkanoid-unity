@@ -7,6 +7,10 @@ public class ControlPlataforma : MonoBehaviour
     // Esta variable controlará si se ha iniciado o no, mientras no se inicie, la posición X de la bola será la misma que la de la plataforma
     private bool iniciado = false;
     
+    // Esta variable controla que ya se haya comenzado la cuenta atrás en el móvil
+    private bool primerTouch = false;
+
+    
     public Rigidbody2D bola;
     public Rigidbody2D bolaConFisicas;
     
@@ -21,11 +25,11 @@ public class ControlPlataforma : MonoBehaviour
     // Fuerza de lanzamiento del rebote
     private float fuerza = 4f;
 
-    private float limiteMuroIzq = -1000.0f;
-    private float limiteMuroDer = 1000.0f;
-
     void Start()
     {
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_tocaParaEmpezar.SetActive(true);
+
         //Conseguimos la bola
         Rigidbody2D d = (Rigidbody2D)Instantiate(bola, transform.position, transform.rotation);
         bola = d;
@@ -48,18 +52,27 @@ public class ControlPlataforma : MonoBehaviour
 
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            //touchPosition.z = transform.position.z;
-            //touchPosition.y = transform.position.y;
-            if (touchPosition.x < 0)
+            if (!primerTouch)
             {
-                moverALaIzquierda(limiteIzq, limiteDer);
+                primerTouch = true;
+                StartCoroutine(animacionComenzarPartida(true));
             }
-            if (touchPosition.x > 0)
+            else
             {
-                moverALaDerecha(limiteIzq, limiteDer);
+                Touch touch = Input.GetTouch(0);
+                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                //touchPosition.z = transform.position.z;
+                //touchPosition.y = transform.position.y;
+                if (touchPosition.x < 0)
+                {
+                    moverALaIzquierda(limiteIzq, limiteDer);
+                }
+                if (touchPosition.x > 0)
+                {
+                    moverALaDerecha(limiteIzq, limiteDer);
+                }
             }
+
         }
 
 
@@ -93,6 +106,27 @@ public class ControlPlataforma : MonoBehaviour
 
     }
 
+    IEnumerator animacionComenzarPartida(bool entera)
+    {
+        if (entera) // Por si acaso utiliza un teclado por usb y le da al espacio
+        {
+            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_tocaParaEmpezar.SetActive(false);
+            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_3.SetActive(true);
+            yield return new WaitForSeconds(1);
+            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_3.SetActive(false);
+            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_2.SetActive(true);
+            yield return new WaitForSeconds(1);
+            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_2.SetActive(false);
+            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_1.SetActive(true);
+            yield return new WaitForSeconds(1);
+            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_1.SetActive(false);
+        }
+        GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_go.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        barraEspaciadora();
+        yield return new WaitForSeconds(0.5f);
+        GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_go.SetActive(false);
+    }
 
     void moverALaIzquierda(float limiteIzq, float limiteDer)
     {
@@ -155,6 +189,8 @@ public class ControlPlataforma : MonoBehaviour
         //Debug.Log(Screen.height);
         if (!iniciado)
         {
+            if (!primerTouch)
+                StartCoroutine(animacionComenzarPartida(false)); // Solo sale el 'Go!'
             iniciado = true;
             if (bola != null)
             {
