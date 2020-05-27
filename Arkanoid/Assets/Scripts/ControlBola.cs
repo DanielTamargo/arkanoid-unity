@@ -8,12 +8,10 @@ public class ControlBola : MonoBehaviour
     public int nivel = 1;
     private float speed = 12.0f;
 
-
     private int numBloquesTotal = 0;
     private int bloquesGolpeados = 0;
     private int golpesSeguidos = 0;
     private int golpesBordesSeguidos = 0;
-
 
     private bool nivelFallido = false;
     private bool nivelSuperado = false;

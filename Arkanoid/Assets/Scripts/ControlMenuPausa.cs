@@ -37,6 +37,7 @@ public class ControlMenuPausa : MonoBehaviour
         Time.timeScale = 1f;
         FindObjectOfType<AudioManager>().StopAll();
         Debug.Log("Saliendo al menú...");
+        Reanudar();
         Destroy(GameObject.FindGameObjectWithTag("Overlay"));
         SceneManager.LoadScene(0);
     }

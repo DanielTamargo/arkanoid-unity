@@ -8,6 +8,8 @@ TagManager:
   - Bordes
   - BloqueAzul
   - Overlay
+  - Plataforma
+  - Disparo
   layers:
   - Default
   - TransparentFX

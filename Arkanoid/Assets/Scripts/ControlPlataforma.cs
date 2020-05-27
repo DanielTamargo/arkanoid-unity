@@ -4,12 +4,14 @@ using System.IO;
 
 public class ControlPlataforma : MonoBehaviour
 {
-    // Esta variable controlará si se ha iniciado o no, mientras no se inicie, la posición X de la bola será la misma que la de la plataforma
+    // Controlará si se ha iniciado o no, mientras no se inicie, la posición X de la bola será la misma que la de la plataforma
     private bool iniciado = false;
     
-    // Esta variable controla que ya se haya comenzado la cuenta atrás en el móvil
+    // Controlará que ya se haya comenzado la cuenta atrás en el móvil
     private bool primerTouch = false;
-
+    
+    // Controlará si estamos aturdidos o no (el jefe dispara)
+    private bool aturdido = false;
     
     public Rigidbody2D bola;
     public Rigidbody2D bolaConFisicas;
@@ -27,8 +29,8 @@ public class ControlPlataforma : MonoBehaviour
 
     void Start()
     {
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
-            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_tocaParaEmpezar.SetActive(true);
+        //if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_tocaParaEmpezar.SetActive(true);
 
         //Conseguimos la bola
         Rigidbody2D d = (Rigidbody2D)Instantiate(bola, transform.position, transform.rotation);
@@ -50,67 +52,69 @@ public class ControlPlataforma : MonoBehaviour
         float limiteIzq = -1.0f * distanciaHorizontal;
         float limiteDer = 1.0f * distanciaHorizontal;
 
-        if (Input.touchCount > 0)
+        if (!aturdido) // Aturdido no se puede mover, solo entrará si NO estamos aturdidos
         {
-            if (!primerTouch)
+            if (Input.touchCount > 0)
             {
-                primerTouch = true;
-                StartCoroutine(animacionComenzarPartida(true));
+                if (!primerTouch)
+                {
+                    primerTouch = true;
+                    StartCoroutine(animacionComenzarPartida(true));
+                }
+                else
+                {
+                    Touch touch = Input.GetTouch(0);
+                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    //touchPosition.z = transform.position.z;
+                    //touchPosition.y = transform.position.y;
+                    if (touchPosition.x < 0)
+                    {
+                        moverALaIzquierda(limiteIzq, limiteDer);
+                    }
+                    if (touchPosition.x > 0)
+                    {
+                        moverALaDerecha(limiteIzq, limiteDer);
+                    }
+                }
+
             }
-            else
+
+
+            // Teclas: A, Flecha Izquierda
+            if (tecladoHorizontal < 0)
             {
-                Touch touch = Input.GetTouch(0);
-                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                //touchPosition.z = transform.position.z;
-                //touchPosition.y = transform.position.y;
-                if (touchPosition.x < 0)
-                {
-                    moverALaIzquierda(limiteIzq, limiteDer);
-                }
-                if (touchPosition.x > 0)
-                {
-                    moverALaDerecha(limiteIzq, limiteDer);
-                }
+                moverALaIzquierda(limiteIzq, limiteDer);
             }
 
-        }
+            // Teclas: D, Flecha Derecha
+            if (tecladoHorizontal > 0)
+            {
+                moverALaDerecha(limiteIzq, limiteDer);
+            }
 
+            // Iniciar con la barra espaciadora
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                barraEspaciadora();
+            }
 
-        // Teclas: A, Flecha Izquierda
-        if (tecladoHorizontal < 0)
-        {
-            moverALaIzquierda(limiteIzq, limiteDer);
-        }
-
-        // Teclas: D, Flecha Derecha
-        if (tecladoHorizontal > 0)
-        {
-            moverALaDerecha(limiteIzq, limiteDer);
+            if (bola != null)
+            {
+                if (bola.transform.position.y < -8.0f)
+                {
+                    Destroy(bola.gameObject);
+                    bola = null;
+                }
+            }
         }
         
-        // Iniciar con la barra espaciadora
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            barraEspaciadora();
-        }
-
-        if (bola != null)
-        {
-            if (bola.transform.position.y < -8.0f)
-            {
-                Destroy(bola.gameObject);
-                bola = null;
-            }
-        }
-
-
     }
 
     IEnumerator animacionComenzarPartida(bool entera)
     {
+        GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_tocaParaEmpezar.SetActive(false);
         if (entera) // Por si acaso utiliza un teclado por usb y le da al espacio
         {
-            GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_tocaParaEmpezar.SetActive(false);
             GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_3.SetActive(true);
             yield return new WaitForSeconds(1);
             GameObject.Find("Overlay").GetComponent<ControlOverlay>().o_3.SetActive(false);
@@ -225,6 +229,26 @@ public class ControlPlataforma : MonoBehaviour
             }
 
         }
+        else if (coll.gameObject.tag == "Disparo")
+            aturdir();
+    }
+
+    IEnumerator aturdir()
+    {
+        //reproducir sonido stuneado
+        aturdido = true;
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("paddleRed_stun");
+        yield return new WaitForSeconds(0.4f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("paddleRed");
+        yield return new WaitForSeconds(0.4f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("paddleRed_stun");
+        yield return new WaitForSeconds(0.3f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("paddleRed");
+        yield return new WaitForSeconds(0.3f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("paddleRed_stun");
+        yield return new WaitForSeconds(0.3f);
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("paddleRed");
+        aturdido = false;
     }
 
 }

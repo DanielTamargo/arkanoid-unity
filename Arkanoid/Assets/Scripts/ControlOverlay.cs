@@ -93,6 +93,12 @@ public class ControlOverlay : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // Si no estamos en el móvil, le decimos que tiene que empezar pulsando la barra espaciadora
+        if (Application.platform != RuntimePlatform.Android || Application.platform != RuntimePlatform.IPhonePlayer)
+        {
+            o_tocaParaEmpezar.GetComponent<TextMeshProUGUI>().text = "Pulsa la barra espaciadora para empezar";
+            o_tocaParaEmpezar.GetComponent<TextMeshProUGUI>().fontSize = o_tocaParaEmpezar.GetComponent<TextMeshProUGUI>().fontSize - 10;
+        }
         panel.SetActive(false);
         t_nivel = o_nivel.GetComponent<TextMeshProUGUI>();
         t_puntuacion = o_puntuacion.GetComponent<TextMeshProUGUI>();
@@ -220,34 +226,27 @@ public class ControlOverlay : MonoBehaviour
         if (nombreJugador.Length < 3)
             nombreJugador = "Guest";
         else if (nombreJugador.Length > 16)
-            nombreJugador = nombreJugador.Substring(0, 16);
+            nombreJugador = nombreJugador.Substring(0, 5);
         t_jugador.text = nombreJugador;
 
-        if (nombreJugador.ToLower().CompareTo("love") == 1)
-        {
+        if (nombreJugador.ToLower().Contains("love"))
             love = true;
-        }
+        else
+            love = false;
         /* Todos estos ifs (y más) no me funcionaban bien :) (: :) (: :) (: :) (:
+        if (nombreJugador.ToLower().CompareTo("love") == 1)
+            love = true;
         if (nombreJugador.Trim().ToLower() == "love")
-        {
             love = true;
-        }
         if (nombreJugador.Equals("love", StringComparision.OrdinalIgnoreCase))
-        {
             love = true;
-        }
         if (nombreJugador.ToLower() == "love")
-        {
             love = true;
-        }
         if (nombreJugador.Equals("love"))
-        {
             love = true;
-        }
         if (nombreJugador is "love")
-        {
             love = true;
-        }*/
+        */
         pasarNivel();
     }
 
