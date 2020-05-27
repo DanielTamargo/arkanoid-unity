@@ -22,7 +22,7 @@ public class ControlMenuPausa : MonoBehaviour
         {
             if (JuegoPausado)
             {
-                FindObjectOfType<AudioManager>().Play("sfx_pause_out");
+                //FindObjectOfType<AudioManager>().Play("sfx_pause_out");
                 Reanudar();
             } else
             {
@@ -45,13 +45,11 @@ public class ControlMenuPausa : MonoBehaviour
     {
         Debug.Log("Saliendo del juego...");
         Application.Quit();
-        if (UnityEditor.EditorApplication.isPlaying) {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
     }
 
     public void Reanudar()
     {
+        FindObjectOfType<AudioManager>().Play("sfx_pause_out");
         Debug.Log("Reanudando...");
         menuPausaUI.SetActive(false);
         Time.timeScale = 1f;

@@ -19,6 +19,7 @@ public class ControlBola : MonoBehaviour
     public GameObject efectoExplosion;
     private bool slowmo = false;
     private bool r2d2 = false;
+    private bool wohoo = false;
 
     private GameObject overlay;
 
@@ -159,7 +160,7 @@ public class ControlBola : MonoBehaviour
         
         FindObjectOfType<AudioManager>().Play("sfx_combo_1");
         yield return new WaitForSeconds(1.5f);
-        if (golpesSeguidos <= 3)
+        if (golpesSeguidos <= 3 || (golpesSeguidos > 3 && !wohoo))
         {
             FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
             yield return new WaitForSeconds(0.2f);
@@ -170,6 +171,7 @@ public class ControlBola : MonoBehaviour
 
     IEnumerator comboWooho()
     {
+        wohoo = true;
         Time.timeScale = 0.4f;
         if (!slowmo)
         {
@@ -179,12 +181,13 @@ public class ControlBola : MonoBehaviour
         slowmo = true;
         FindObjectOfType<AudioManager>().Play("sfx_combo_2");
         yield return new WaitForSeconds(1.5f);
-        if (golpesSeguidos <= 4)
+        if (golpesSeguidos <= 4 || (golpesSeguidos > 4 && !r2d2))
         {
             FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
             yield return new WaitForSeconds(0.2f);
             Time.timeScale = 1f;
             slowmo = false;
+            wohoo = false;
         }
     }
 

@@ -46,72 +46,35 @@ public class ControlPlataforma : MonoBehaviour
         float limiteIzq = -1.0f * distanciaHorizontal;
         float limiteDer = 1.0f * distanciaHorizontal;
 
-        // Tecla: Izquierda
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            //touchPosition.z = transform.position.z;
+            //touchPosition.y = transform.position.y;
+            if (touchPosition.x < 0)
+            {
+                moverALaIzquierda(limiteIzq, limiteDer);
+            }
+            if (touchPosition.x > 0)
+            {
+                moverALaDerecha(limiteIzq, limiteDer);
+            }
+        }
+
+
+        // Teclas: A, Flecha Izquierda
         if (tecladoHorizontal < 0)
         {
-
-            if (transform.position.x > limiteMuroIzq)
-            {
-                // Nos movemos a la izquierda hasta llegar al límite para entrar por el otro lado
-                if (transform.position.x > limiteIzq)
-                {
-                    transform.Translate(Vector2.left * velocidad * Time.deltaTime);
-                    if (!iniciado)
-                    {
-                        if (bola != null)
-                        {
-                            bola.transform.Translate(Vector2.left * velocidad * Time.deltaTime);
-                        }
-                    }
-                }
-                else
-                {
-                    transform.position = new Vector2(limiteDer, transform.position.y);
-                    if (!iniciado)
-                    {
-                        if (bola != null)
-                        {
-                            bola.transform.position = new Vector2(limiteDer, bola.position.y);
-                        }
-                    }
-
-                }
-            }
+            moverALaIzquierda(limiteIzq, limiteDer);
         }
 
-        // Tecla: Derecha
+        // Teclas: D, Flecha Derecha
         if (tecladoHorizontal > 0)
         {
-            if (transform.position.x < limiteMuroDer)
-            {
-                // Nos movemos a la derecha hasta llegar al límite para entrar por el otro lado
-                if (transform.position.x < limiteDer)
-                {
-                    transform.Translate(Vector2.right * velocidad * Time.deltaTime);
-                    if (!iniciado)
-                    {
-                        if (bola != null)
-                        {
-                            bola.transform.Translate(Vector2.right * velocidad * Time.deltaTime);
-                        }
-                    }
-                }
-                else
-                {
-                    transform.position = new Vector2(limiteIzq, transform.position.y);
-                    if (!iniciado)
-                    {
-                        if (bola != null)
-                        {
-                            bola.transform.position = new Vector2(limiteIzq, bola.position.y);
-                        }
-                    }
-                }
-            }
+            moverALaDerecha(limiteIzq, limiteDer);
         }
-
         
-
         // Iniciar con la barra espaciadora
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -128,6 +91,62 @@ public class ControlPlataforma : MonoBehaviour
         }
 
 
+    }
+
+
+    void moverALaIzquierda(float limiteIzq, float limiteDer)
+    {
+        // Nos movemos a la izquierda hasta llegar al límite para entrar por el otro lado
+        if (transform.position.x > limiteIzq)
+        {
+            transform.Translate(Vector2.left * velocidad * Time.deltaTime);
+            if (!iniciado)
+            {
+                if (bola != null)
+                {
+                    bola.transform.Translate(Vector2.left * velocidad * Time.deltaTime);
+                }
+            }
+        }
+        else
+        {
+            transform.position = new Vector2(limiteDer, transform.position.y);
+            if (!iniciado)
+            {
+                if (bola != null)
+                {
+                    bola.transform.position = new Vector2(limiteDer, bola.position.y);
+                }
+            }
+
+        }
+    }
+
+    void moverALaDerecha(float limiteIzq, float limiteDer)
+    {
+        // Nos movemos a la derecha hasta llegar al límite para entrar por el otro lado
+        if (transform.position.x < limiteDer)
+        {
+            transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+            if (!iniciado)
+            {
+                if (bola != null)
+                {
+                    bola.transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+                }
+            }
+        }
+        else
+        {
+            transform.position = new Vector2(limiteIzq, transform.position.y);
+            if (!iniciado)
+            {
+                if (bola != null)
+                {
+                    bola.transform.position = new Vector2(limiteIzq, bola.position.y);
+                }
+            }
+        }
     }
 
     void barraEspaciadora()
