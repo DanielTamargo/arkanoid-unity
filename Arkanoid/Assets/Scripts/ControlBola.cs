@@ -20,6 +20,7 @@ public class ControlBola : MonoBehaviour
     private bool slowmo = false;
     private bool r2d2 = false;
     private bool wohoo = false;
+    private bool revert = false;
 
     private GameObject overlay;
 
@@ -206,11 +207,17 @@ public class ControlBola : MonoBehaviour
             r2d2 = true;
         }
         yield return new WaitForSeconds(0.8f);
-        FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
+        if (!revert)
+        {
+            revert = true;
+            FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
+        }
         yield return new WaitForSeconds(0.2f);
         Time.timeScale = 1f;
         slowmo = false;
         r2d2 = false;
+        yield return new WaitForSeconds(0.5f);
+        revert = false;
     }
 
 
