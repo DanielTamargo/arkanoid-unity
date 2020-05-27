@@ -1,4 +1,4 @@
-### https://raw.github.com/github/gitignore/599646e9d0a26283d67715dead8f26e0eb2df753/Unity.gitignore
+### https://raw.github.com/github/gitignore/18aa6d83774d514da479d73a4beb864cd4220231/Unity.gitignore
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #
@@ -59,10 +59,17 @@ sysinfo.txt
 
 # Builds
 *.apk
+*.aab
 *.unitypackage
 
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Packed Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
 
 
