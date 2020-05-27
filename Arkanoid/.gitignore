@@ -140,8 +140,8 @@ sysinfo.txt
 crashlytics-build.properties
 
 
-Arkanoid/Assets/google-services.json
+Assets/google-services.json
 
-Arkanoid/Assets/GoogleService-Info.plist
+Assets/GoogleService-Info.plist
 
-Arkanoid/Assets/StreamingAssets/google-services-desktop.json
+Assets/StreamingAssets/google-services-desktop.json
