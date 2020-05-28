@@ -101,7 +101,7 @@ public class ControlOverlay : MonoBehaviour
         }
         panel.SetActive(false);
 
-        input_jugador.GetComponent<TextMeshProUGUI>().maxVisibleCharacters = 5;
+        //input_jugador.GetComponent<TextMeshProUGUI>().maxVisibleCharacters = 5;
         
         t_nivel = o_nivel.GetComponent<TextMeshProUGUI>();
         t_puntuacion = o_puntuacion.GetComponent<TextMeshProUGUI>();
@@ -125,26 +125,27 @@ public class ControlOverlay : MonoBehaviour
     {
         if (vidas > 0)
         {
+            puntos = puntosPreNivel;
             vidas -= 1;
             o_vidas.SetActive(false);
             o_vidas.SetActive(true);
         }
         
-        puntos = puntosPreNivel;
         //pararMusica();
 
         if (vidas <= 0)
         {
+            // Guardamos el registro cuando se acaban las vidas
+            FindObjectOfType<BaseDeDatos>().nuevaPuntuacion(puntos, nombreJugador);
+
             // Reseteamos valores
             vidas = 3;
             puntos = 0;
             puntosPreNivel = 0;
             nivel = -1;
             FindObjectOfType<AudioManager>().StopAll();
-            //TODO falta guardar registro en la BBDD
 
-            //FindObjectOfType<AudioManager>().Play("sfx_lose");
-
+            // Volvemos al menú (nivel -1 + pasarNivel = menú)
             pasarNivel();
         } else
         {
@@ -226,10 +227,11 @@ public class ControlOverlay : MonoBehaviour
 
     public void configurarNombre()
     {
+        nombreJugador = "Guest";
         nombreJugador = t_input_jugador.text;
-        if (nombreJugador.Length < 3)
+        if (nombreJugador.Length < 1 || nombreJugador.Trim() == "")
             nombreJugador = "Guest";
-        else if (nombreJugador.Length > 16)
+        else if (nombreJugador.Length > 5)
             nombreJugador = nombreJugador.Substring(0, 5);
         t_jugador.text = nombreJugador;
 
@@ -305,7 +307,9 @@ public class ControlOverlay : MonoBehaviour
             case 5:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_4");
 
-                //TODO Falta guardar en la bbdd
+                // Guardamos el registro cuando se pasa el nivel
+                FindObjectOfType<BaseDeDatos>().nuevaPuntuacion(puntos, nombreJugador);
+
                 //Reseteamos datos
                 nivel = -1;
                 puntos = 0;

@@ -26,8 +26,14 @@ public class BaseDeDatos : MonoBehaviour
     void Start()
     {
         // Conectamos con la base de datos
-        //db = FirebaseFirestore.GetInstance(FirebaseApp.DefaultInstance); //<- Bug!
-        db = FirebaseFirestore.GetInstance(FirebaseApp.Create()); // Se cierra también :/
+        try
+        {
+            db = FirebaseFirestore.GetInstance(FirebaseApp.DefaultInstance); //<- Bug!
+        }
+        catch
+        {
+            db = FirebaseFirestore.GetInstance(FirebaseApp.Create()); // Se cierra también :/
+        }
 
         // Creamos una referencia a una colección (es decir, a una """tabla""" para luego trabajar con los datos)
         CollectionReference puntuaciones = db.Collection("puntuaciones");
