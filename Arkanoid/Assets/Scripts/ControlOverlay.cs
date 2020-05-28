@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Firebase.Firestore;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -47,6 +48,8 @@ public class ControlOverlay : MonoBehaviour
     public static ControlOverlay instance;
 
     private int testeito = 0;
+
+    private FirebaseFirestore db;
 
     public void test() 
     {
@@ -100,6 +103,9 @@ public class ControlOverlay : MonoBehaviour
             o_tocaParaEmpezar.GetComponent<TextMeshProUGUI>().fontSize = o_tocaParaEmpezar.GetComponent<TextMeshProUGUI>().fontSize - 10;
         }
         panel.SetActive(false);
+
+        input_jugador.GetComponent<TextMeshProUGUI>().maxVisibleCharacters = 5;
+        
         t_nivel = o_nivel.GetComponent<TextMeshProUGUI>();
         t_puntuacion = o_puntuacion.GetComponent<TextMeshProUGUI>();
         t_vidas = o_vidas.GetComponent<TextMeshProUGUI>();

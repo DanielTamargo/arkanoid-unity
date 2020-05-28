@@ -154,6 +154,12 @@ Arkanoid/Assets/StreamingAssets/google-services-desktop.json
 
 Arkanoid/Assets/Firebase/
 
-Arkanoid/Assets/StreamingAssets/
+# Arkanoid/Assets/StreamingAssets/
 
 Arkanoid/Assets/Parse/
+
+Arkanoid/Assets/Editor Default Resources/
+
+Arkanoid/Assets/ExternalDependencyManager/
+
+Arkanoid/Assets/Plugins/
