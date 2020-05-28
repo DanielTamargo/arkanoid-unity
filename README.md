@@ -56,6 +56,13 @@ Mi opinión sobre el proyecto es bastante positiva, he aprendido bastante en est
 
 ---
 
+## Curiosidades
+
+- Los 4 niveles cuentan con un sistema de "combos", donde si golpeas varias veces los bloques sin volver a tocar la plataforma y consigues romperlos sonarán distintos sonidos y aumentará significativamente tu puntuación (sirve de multiplicador), si quieres buscar la puntuación más alta, buscar los combos será tu camino.
+- Cuando un bloque que tiene más de un golpe de vida recibe golpes, se va agrietando hasta morir. Estos efectos los he añadido a base de editar las imágenes.
+
+---
+
 ## Atribuciones
 
 ### Canciones
@@ -68,14 +75,17 @@ Mi opinión sobre el proyecto es bastante positiva, he aprendido bastante en est
 - [Nivel 4: Boku No Hero Academia OP - Peace Sign (8bit)](https://www.youtube.com/watch?v=cO7QF21FBno)
 - [Especial: What is Love (8bit)](https://www.youtube.com/watch?v=CT8t_1JXWn8)
 
-### Sonidos
+### Otros
 
 - Combos
   * You rock! (Smite)
   * Wohoo! (Smite)
   * R2D2 Scre0am (Star Wars)
-- [Efectos varios sacados de este pack](https://opengameart.org/content/512-sound-effects-8-bit-style)
-- Otros (slowmo, slowmo_revert, ...)
+- [Efectos de sonido varios sacados de este pack](https://opengameart.org/content/512-sound-effects-8-bit-style)
+- Otros sonidos (slowmo, slowmo_revert, ...)
+- [Pack de recursos (imágenes) puzzleGraphics](https://opengameart.org/content/puzzle-game-art)
+- Otros recursos e imágenes...
+
 
 ---
 
