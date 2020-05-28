@@ -3,7 +3,7 @@
 
 ## Enlaces alternativos
 
-Nota: Todos estos enlaces son enlaces a aplicaciones o repositorios **sin la base de datos implementada** (daba demasiados problemas).
+**Nota:** Todos estos enlaces son enlaces a aplicaciones o repositorios **sin la base de datos implementada** (daba demasiados problemas).
 - [**.APK** para Android (51 Megas)](https://drive.google.com/a/ikasle.egibide.org/uc?id=1t7FVokKtAUvHii8le_XNEBJCKtsfqtv9&export=download)
 - [**.EXE** para Windows (41 Megas comprimido, 116 sin comprimir)](https://drive.google.com/uc?id=1Tidb5BCnVlSCz5vdvQcrnr2W6sVHIlfy&export=download)
 - [**Proyecto** de Unity (173 Megas comprimido, 439 sin comprimir ](https://drive.google.com/uc?id=1b7TYbN7p63qVX4bsq1X0G18BfTxwpTXu&export=download)
@@ -46,7 +46,17 @@ Nota: Todos estos enlaces son enlaces a aplicaciones o repositorios **sin la bas
 
 ---
 
-## Atribuciones (W.I.P.)
+## Reflexión
+
+Unity me ha gustado bastante. Empecé con unos conocimientos muy básicos y olvidados y a través de informarme en internet, ensayo y error y tratar de innovar continuamente creo que he conseguido un proyecto bastante bueno.
+
+La base de datos Firebase me ha sorprendido, es como bien dices en el vídeo de la explicación, un Json gigante que puede encadenar varios Json. La rapidez de respuesta con el servidor es brutal y el trabajar con esta bd es bastante cómodo. Es una pena que haga que Unity deje de funcionar y que de problemas con las librerías al hacer un Build (aunque esta última parte igual es más bien culpa mía, pero creo que no he sido el único con este problema).
+
+Mi opinión sobre el proyecto es bastante positiva, he aprendido bastante en estos días que le he dedicado de desarrollo, y he notado como mi progreso iba a más y más. Es uno de esos proyectos que siempre que le echas un vistazo se te ocurre algo que añadirle, y no descarto seguir trabajando sobre él en el futuro.
+
+---
+
+## Atribuciones
 
 ### Canciones
 
@@ -61,10 +71,11 @@ Nota: Todos estos enlaces son enlaces a aplicaciones o repositorios **sin la bas
 ### Sonidos
 
 - Combos
-  * You rock! (smite)
-  * Wohoo! (smite)
-  * R2D2 Scream (star wars)
-- [Efectos varios sacados de este enlace](https://opengameart.org/content/512-sound-effects-8-bit-style)
+  * You rock! (Smite)
+  * Wohoo! (Smite)
+  * R2D2 Scre0am (Star Wars)
+- [Efectos varios sacados de este pack](https://opengameart.org/content/512-sound-effects-8-bit-style)
+- Otros (slowmo, slowmo_revert, ...)
 
 ---
 
