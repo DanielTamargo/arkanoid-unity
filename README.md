@@ -12,13 +12,15 @@
 
 ## Menús
 
-### Menú principal
+### Menú principal + Menú opciones
 
 ![MenuPrincipal](/readme-assets/menuprincipal.png)
+![MenuOpciones](/readme-assets/menuopciones.png)
 
-### Menú puntuaciones
+### Menú puntuaciones + Ocultando panel
 
 ![MenuPuntuaciones](/readme-assets/menupuntuaciones.png)
+![MenuPuntuaciones2](/readme-assets/menupuntuaciones2.png)
 
 ### Menú pausa (in game)
 
