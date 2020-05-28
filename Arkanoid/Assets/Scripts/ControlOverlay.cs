@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Firebase.Firestore;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -48,8 +47,6 @@ public class ControlOverlay : MonoBehaviour
     public static ControlOverlay instance;
 
     private int testeito = 0;
-
-    private FirebaseFirestore db;
 
     public void test() 
     {
@@ -112,6 +109,7 @@ public class ControlOverlay : MonoBehaviour
         t_jugador = o_jugador.GetComponent<TextMeshProUGUI>();
         t_input_jugador = input_jugador.GetComponent<TextMeshProUGUI>();
         pasarNivel();
+
     }
 
     // Update is called once per frame

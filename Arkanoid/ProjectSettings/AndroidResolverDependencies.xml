@@ -81,7 +81,7 @@
   </files>
   <settings>
     <setting name="androidAbis" value="armeabi-v7a" />
-    <setting name="bundleId" value="com.com.tamargo.ArkanoidDT" />
+    <setting name="bundleId" value="com.tamargo.arkanoiddt" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
     <setting name="gradleTemplateEnabled" value="False" />
