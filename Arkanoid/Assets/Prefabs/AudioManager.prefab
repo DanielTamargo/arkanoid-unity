@@ -47,32 +47,32 @@ MonoBehaviour:
   sonidos:
   - nombre: bg_nivel_0
     clip: {fileID: 8300000, guid: 227db86afa8ae224297c5dd1ee5b6d82, type: 3}
-    volume: 0.224
+    volume: 0.177
     loop: 1
     source: {fileID: 0}
   - nombre: bg_nivel_1
     clip: {fileID: 8300000, guid: 06bfe8555defc9e46ad5794ff1a2bb5e, type: 3}
-    volume: 0.335
+    volume: 0.272
     loop: 1
     source: {fileID: 0}
   - nombre: bg_nivel_2
     clip: {fileID: 8300000, guid: b3fc20e4d75b6c74ea58f48d88127105, type: 3}
-    volume: 0.843
+    volume: 0.751
     loop: 1
     source: {fileID: 0}
   - nombre: bg_nivel_3
     clip: {fileID: 8300000, guid: 1c4a44dea67953549ab2fc725e5c44d9, type: 3}
-    volume: 0.539
+    volume: 0.495
     loop: 1
     source: {fileID: 0}
   - nombre: bg_nivel_4
     clip: {fileID: 8300000, guid: eac6dc7e0c40e2543a0d52ced914e4ec, type: 3}
-    volume: 0.562
+    volume: 0.494
     loop: 1
     source: {fileID: 0}
   - nombre: bg_especial
     clip: {fileID: 8300000, guid: 82c217e3d56df0649a74589761baafc5, type: 3}
-    volume: 0.686
+    volume: 0.555
     loop: 1
     source: {fileID: 0}
   - nombre: sfx_combo_1
@@ -92,12 +92,12 @@ MonoBehaviour:
     source: {fileID: 0}
   - nombre: sfx_exp_short
     clip: {fileID: 8300000, guid: 8d7c4247f54981e46a19bbbf7a5c27fb, type: 3}
-    volume: 1
+    volume: 0.903
     loop: 0
     source: {fileID: 0}
   - nombre: sfx_exp_long
     clip: {fileID: 8300000, guid: 76d29714a25a9934ab4160021438d4c4, type: 3}
-    volume: 1
+    volume: 0.947
     loop: 0
     source: {fileID: 0}
   - nombre: sfx_slowmo
@@ -127,7 +127,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - nombre: sfx_lose
     clip: {fileID: 8300000, guid: 88fdf486828f47844b40e499c58f9d06, type: 3}
-    volume: 1
+    volume: 0.918
     loop: 0
     source: {fileID: 0}
   - nombre: sfx_impact_1
@@ -138,5 +138,10 @@ MonoBehaviour:
   - nombre: sfx_fall
     clip: {fileID: 8300000, guid: b6d34af55a3f2e3408abe00373c38da0, type: 3}
     volume: 1
+    loop: 0
+    source: {fileID: 0}
+  - nombre: bg_puntuaciones
+    clip: {fileID: 8300000, guid: edeba264b5fbd704b9c386fc9cc3c02a, type: 3}
+    volume: 0.656
     loop: 0
     source: {fileID: 0}

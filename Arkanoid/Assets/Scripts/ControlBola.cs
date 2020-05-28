@@ -87,7 +87,7 @@ public class ControlBola : MonoBehaviour
         {
             // Reseteamos los golpes seguidos
             golpesSeguidos = 0;
-            golpesBordesSeguidos = 0;
+            //golpesBordesSeguidos = 0;
 
             // Calculamos el golpe
             float x = calcularGolpe(transform.position,
@@ -112,7 +112,7 @@ public class ControlBola : MonoBehaviour
 
 
             golpesSeguidos += 1;
-            golpesBordesSeguidos = 0;
+            //golpesBordesSeguidos = 0;
             bool bloqueMuere = collision.gameObject.GetComponent<ControlBloqueAzul>().bloqueMuere();
             if (bloqueMuere)
             {
@@ -141,18 +141,20 @@ public class ControlBola : MonoBehaviour
             }
             
         }
-        else if (collision.gameObject.tag == "Bordes")
+        if (collision.gameObject.tag == "Bordes")
         {
             golpesBordesSeguidos += 1;
-            if (golpesBordesSeguidos >= 10)
+            if (golpesBordesSeguidos >= 7) // Si da 7 golpes seguidos entre paredes, se lanza hacia abajo
             {
-                // Calculamos la dirección, hacemos set length hasta 1
+                // Calculamos la dirección
                 Vector2 dir = new Vector2(transform.position.x, -1).normalized;
 
                 // Cofiguramos la Velocity con dir * speed
                 GetComponent<Rigidbody2D>().velocity = dir * speed;
             }
         }
+        else
+            golpesBordesSeguidos = 0;
     }
 
     IEnumerator animacionLose()
