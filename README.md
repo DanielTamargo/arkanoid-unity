@@ -57,6 +57,7 @@ Mi opinión sobre el proyecto es bastante positiva, he aprendido muchísmo en es
 ## Curiosidades
 
 - Hay un nombre de jugador que desencadena un easter egg, desbloqueando una canción que sólo puede escucharse con ese nombre (o con contener ese nombre).
+- El fondo que se mueve es una imagen que crea un clon detrás de ella al empezar y después cada imagen crea un clon cada vez que llega a X posición, simulando que es un paisaje infinito, realmente son dos imágenes moviéndose seguidas y cada vez que la primera llega al final, se clona al principio y vuelve a empezar.
 - Los 4 niveles cuentan con un sistema de "combos", donde si golpeas varias veces los bloques sin volver a tocar la plataforma y consigues romperlos sonarán distintos sonidos y aumentará significativamente tu puntuación (sirve de multiplicador), si quieres buscar la puntuación más alta, buscar los combos será tu camino.
 - Cuando un bloque que tiene más de un golpe de vida recibe golpes, se va agrietando con cada golpe hasta morir. De esta manera se da un efecto visual a la vida restante de los bloques. También añadí un efecto pequeño de partículas para simular que se desprenden trozos del bloque favoreciendo aún más lo anterior.
 - En el logo de la aplicación se puede apreciar como los bloques azules, morados y rojos intentan proteger de la bola al bloque verde, tal como se puede ver en la "historia" del juego.
@@ -89,7 +90,7 @@ Mi opinión sobre el proyecto es bastante positiva, he aprendido muchísmo en es
 - Combos
   * [You rock! (Smite)](https://gamepedia.cursecdn.com/smite_gamepedia/b/ba/VOX_VGS_Emote_R.ogg)
   * [Wohoo! (Smite)](https://gamepedia.cursecdn.com/smite_gamepedia/2/25/VOX_VGS_Emote_W.ogg)
-  * [R2D2 Scre0am (Star Wars) (cuidado con el enlace que suena muy alto, pulsa el botón grande para reproducir el sonido)](https://www.myinstants.com/instant/r2d2-scream/)
+  * [R2D2 Scream (Star Wars) (cuidado con el enlace que suena muy alto, pulsa el botón grande para reproducir el sonido)](https://www.myinstants.com/instant/r2d2-scream/)
 - [Efectos de sonido varios sacados de este pack](https://opengameart.org/content/512-sound-effects-8-bit-style)
 - Otros sonidos (slowmo, slowmo_revert, ...)
 - [Pack de recursos (imágenes) puzzleGraphics](https://opengameart.org/content/puzzle-game-art)
