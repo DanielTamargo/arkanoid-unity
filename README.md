@@ -58,6 +58,7 @@ Mi opinión sobre el proyecto es bastante positiva, he aprendido muchísmo en es
 
 ## Curiosidades
 
+- Hay un nombre de jugador que desencadena un easter egg, desbloqueando una canción que sólo puede escucharse con ese nombre (o con contener ese nombre).
 - Los 4 niveles cuentan con un sistema de "combos", donde si golpeas varias veces los bloques sin volver a tocar la plataforma y consigues romperlos sonarán distintos sonidos y aumentará significativamente tu puntuación (sirve de multiplicador), si quieres buscar la puntuación más alta, buscar los combos será tu camino.
 - Cuando un bloque que tiene más de un golpe de vida recibe golpes, se va agrietando hasta morir. De esta manera se da un efecto visual a la vida restante de los bloques. También añadí un efecto pequeño de partículas para simular que se desprenden trozos del bloque favoreciendo aún más lo anterior.
 - En el logo de la aplicación se puede apreciar como los bloques azules, morados y rojos intentan proteger de la bola al bloque verde, tal como se puede ver en la "historia" del juego.
