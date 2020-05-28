@@ -14,6 +14,10 @@ public class ControlPuntuaciones : MonoBehaviour
     public GameObject puntuaciones_nombre;
     public GameObject puntuaciones_puntos;
 
+    public GameObject panelMostrarOcultar;
+    public GameObject textMostrarOcultar;
+    private bool oculto = false;
+
     private List<Puntuacion> listaPuntuaciones = new List<Puntuacion>();
     private int pagina = 1;
 
@@ -29,7 +33,8 @@ public class ControlPuntuaciones : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        actualizarPuntuaciones();
+        if (!oculto)
+            actualizarPuntuaciones();
     }
 
     public void botonAnterior()
@@ -41,7 +46,7 @@ public class ControlPuntuaciones : MonoBehaviour
         if (pagina <= 1)
         {
             anterior.SetActive(false);
-            bestScore.SetActive(false);
+            bestScore.SetActive(true);
         }
     }
 
@@ -60,6 +65,26 @@ public class ControlPuntuaciones : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Stop("bg_puntuaciones");
         SceneManager.LoadScene(0);
+    }
+
+    public void mostrarOcultarPanel()
+    {
+        if (!oculto)
+            oculto = true;
+        else
+            oculto = false;
+
+        if (!oculto)
+        {
+            panelMostrarOcultar.SetActive(true);
+            textMostrarOcultar.GetComponent<TextMeshProUGUI>().text = "Ocultar\npanel";
+        }
+        else
+        {
+            panelMostrarOcultar.SetActive(false);
+            textMostrarOcultar.GetComponent<TextMeshProUGUI>().text = "Mostrar\npanel";
+        }
+            
     }
 
     void actualizarPuntuaciones()

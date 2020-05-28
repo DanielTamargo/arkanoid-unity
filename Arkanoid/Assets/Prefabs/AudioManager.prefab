@@ -142,6 +142,6 @@ MonoBehaviour:
     source: {fileID: 0}
   - nombre: bg_puntuaciones
     clip: {fileID: 8300000, guid: edeba264b5fbd704b9c386fc9cc3c02a, type: 3}
-    volume: 1
+    volume: 0.878
     loop: 1
     source: {fileID: 0}
