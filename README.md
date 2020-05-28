@@ -14,34 +14,30 @@
 
 ### Menú principal
 
-
+![MenuPrincipal](/readme-assets/menuprincipal.png)
 
 ### Menú puntuaciones
 
-
+![MenuPuntuaciones](/readme-assets/menupuntuaciones.png)
 
 ### Menú pausa (in game)
 
-
+![MenuPausa](/readme-assets/menupausa.png)
 
 
 ---
 
 ## Niveles
 
-### Nivel 1
+### Niveles 1 y 2
 
+![Nivel1](/readme-assets/nivel1.png)
+![Nivel2](/readme-assets/nivel2.png)
 
+### Niveles 3 y 4
 
-### Nivel 2
-
-
-
-### Nivel 3
-
-
-
-### Nivel 4
+![Nivel3](/readme-assets/nivel3.png)
+![Nivel4](/readme-assets/nivel4.png)
 
 
 ---
@@ -63,6 +59,14 @@ Mi opinión sobre el proyecto es bastante positiva, he aprendido muchísmo en es
 - Cuando un bloque que tiene más de un golpe de vida recibe golpes, se va agrietando con cada golpe hasta morir. De esta manera se da un efecto visual a la vida restante de los bloques. También añadí un efecto pequeño de partículas para simular que se desprenden trozos del bloque favoreciendo aún más lo anterior.
 - En el logo de la aplicación se puede apreciar como los bloques azules, morados y rojos intentan proteger de la bola al bloque verde, tal como se puede ver en la "historia" del juego.
 - En el último nivel se puede encontrar el bloque verde, el jefe. Estaba pensado que el bloque verde crease disparos que cayeran hacia abajo y que si golpeaban la plataforma, la dejaran aturdida durante 1.5segundos (¿quizás en futuras actualizaciones?).
+- También en el último nivel se puede aprovechar la mecánica de irse por un lado de la pantalla y aparecer por el otro, puesto que al comenzarlo se destruyen los pilares que bloqueaban el paso a la plataforma.
+- En el dispositivo móvil se comienza una vez el usuario pulse la pantalla por primera vez en el nivel y hay una cuenta atrás para que pueda situarse donde quiera. En el ordenador te indica que comenzará cuando presiones la barra espaciadora.
+- En la pantalla de puntuaciones, se pueden apreciar varios detalles en la imagen de fondo. La he editado de tal manera que se puedan apreciar los siguientes detalles:
+  * En la TV se puede ver el segundo nivel del juego.
+  * Encima a la derecha de la pantalla está el logo del juego.
+  * En la consola está metida un cartucho en el que pone 'Arkanoid'.
+  * A la derecha se pueden observar diferentes mandos de distintas consolas retro (y la Wii).
+
 
 ---
 
@@ -81,9 +85,9 @@ Mi opinión sobre el proyecto es bastante positiva, he aprendido muchísmo en es
 ### Otros
 
 - Combos
-  * You rock! (Smite)
-  * Wohoo! (Smite)
-  * R2D2 Scre0am (Star Wars)
+  * [You rock! (Smite)](https://gamepedia.cursecdn.com/smite_gamepedia/b/ba/VOX_VGS_Emote_R.ogg)
+  * [Wohoo! (Smite)](https://gamepedia.cursecdn.com/smite_gamepedia/2/25/VOX_VGS_Emote_W.ogg)
+  * [R2D2 Scre0am (Star Wars) (cuidado con el enlace que suena muy alto, pulsa el botón grande para reproducir el sonido)](https://www.myinstants.com/instant/r2d2-scream/)
 - [Efectos de sonido varios sacados de este pack](https://opengameart.org/content/512-sound-effects-8-bit-style)
 - Otros sonidos (slowmo, slowmo_revert, ...)
 - [Pack de recursos (imágenes) puzzleGraphics](https://opengameart.org/content/puzzle-game-art)
