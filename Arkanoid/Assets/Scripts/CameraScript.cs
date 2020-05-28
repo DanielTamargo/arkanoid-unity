@@ -9,6 +9,7 @@ public class CameraScript : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //Debug.Log((float)Screen.height);
         float screenRatio = (float)Screen.width / (float)Screen.height;
         float targetRatio = rink.bounds.size.x / rink.bounds.size.y;
 

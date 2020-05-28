@@ -50,7 +50,8 @@ public class ControlOverlay : MonoBehaviour
 
     public void test() 
     {
-        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        
+        if (Application.isMobilePlatform || Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
             if (testeito == 0)
                 o_tocaParaEmpezar.SetActive(true);
@@ -94,7 +95,7 @@ public class ControlOverlay : MonoBehaviour
     void Start()
     {
         // Si no estamos en el móvil, le decimos que tiene que empezar pulsando la barra espaciadora
-        if (Application.platform != RuntimePlatform.Android || Application.platform != RuntimePlatform.IPhonePlayer)
+        if (Application.platform != RuntimePlatform.Android && Application.platform != RuntimePlatform.IPhonePlayer)
         {
             o_tocaParaEmpezar.GetComponent<TextMeshProUGUI>().text = "Pulsa la barra espaciadora para empezar";
             o_tocaParaEmpezar.GetComponent<TextMeshProUGUI>().fontSize = o_tocaParaEmpezar.GetComponent<TextMeshProUGUI>().fontSize - 10;
@@ -228,11 +229,22 @@ public class ControlOverlay : MonoBehaviour
     public void configurarNombre()
     {
 
-        nombreJugador = t_input_jugador.text;
-        if (nombreJugador.Length > 5)
-            nombreJugador = nombreJugador.Substring(0, 5);
-        else
+        //Debug.Log(t_input_jugador.text.Length);
+        if (t_input_jugador.text.Length - 1 < 2)
+        {
+            //Debug.Log("Muy pequeño");
             nombreJugador = "Guest";
+        }
+        else if (t_input_jugador.text.Length - 1 >= 2 && t_input_jugador.text.Length - 1 < 5)
+        {
+            //Debug.Log("Mediano");
+            nombreJugador = t_input_jugador.text;
+        }
+        else if (t_input_jugador.text.Length - 1 > 5)
+        {
+            nombreJugador = t_input_jugador.text.Substring(0, 5);
+            //Debug.Log("Grande");
+        }
 
         t_jugador.text = nombreJugador;
 
@@ -277,7 +289,8 @@ public class ControlOverlay : MonoBehaviour
                 break;
             case 1:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_0");
-                FindObjectOfType<AudioManager>().Play("bg_nivel_1");
+                if (!love)
+                    FindObjectOfType<AudioManager>().Play("bg_nivel_1");
                 ponerMusicaLove();
                 Debug.Log("Cargando nivel 1...");
                 DontDestroyOnLoad(this);
@@ -285,7 +298,8 @@ public class ControlOverlay : MonoBehaviour
                 break;
             case 2:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_1");
-                FindObjectOfType<AudioManager>().Play("bg_nivel_2");
+                if (!love)
+                    FindObjectOfType<AudioManager>().Play("bg_nivel_2");
 
                 Debug.Log("Cargando nivel 2...");
                 DontDestroyOnLoad(this);
@@ -293,7 +307,8 @@ public class ControlOverlay : MonoBehaviour
                 break;
             case 3:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_2");
-                FindObjectOfType<AudioManager>().Play("bg_nivel_3");
+                if (!love)
+                    FindObjectOfType<AudioManager>().Play("bg_nivel_3");
 
                 Debug.Log("Cargando nivel 3...");
                 DontDestroyOnLoad(this);
@@ -301,7 +316,8 @@ public class ControlOverlay : MonoBehaviour
                 break;
             case 4:
                 FindObjectOfType<AudioManager>().Stop("bg_nivel_3");
-                FindObjectOfType<AudioManager>().Play("bg_nivel_4");
+                if (!love)
+                    FindObjectOfType<AudioManager>().Play("bg_nivel_4");
 
                 Debug.Log("Cargando nivel 4...");
                 DontDestroyOnLoad(this);
