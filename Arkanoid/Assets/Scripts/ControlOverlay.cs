@@ -283,8 +283,9 @@ public class ControlOverlay : MonoBehaviour
                 FindObjectOfType<AudioManager>().Play("bg_nivel_0");
                 if (SceneManager.GetActiveScene().buildIndex != 0)
                 {
-                    DontDestroyOnLoad(this);
-                    SceneManager.LoadScene(0);
+                    //DontDestroyOnLoad(this);
+                    Destroy(this.gameObject);
+					SceneManager.LoadScene(0);
                 }
                 break;
             case 1:
