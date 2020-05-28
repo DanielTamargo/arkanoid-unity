@@ -6,7 +6,7 @@
 **Nota:** Todos estos enlaces son enlaces a aplicaciones o repositorios **sin la base de datos implementada** (daba demasiados problemas).
 - [**.APK** para Android (51 Megas)](https://drive.google.com/a/ikasle.egibide.org/uc?id=1t7FVokKtAUvHii8le_XNEBJCKtsfqtv9&export=download)
 - [**.EXE** para Windows (41 Megas comprimido, 116 sin comprimir)](https://drive.google.com/uc?id=1Tidb5BCnVlSCz5vdvQcrnr2W6sVHIlfy&export=download)
-- [**Proyecto** de Unity (173 Megas comprimido, 439 sin comprimir ](https://drive.google.com/uc?id=1b7TYbN7p63qVX4bsq1X0G18BfTxwpTXu&export=download)
+- [**Proyecto** de Unity (173 Megas comprimido, 439 sin comprimir)](https://drive.google.com/uc?id=1b7TYbN7p63qVX4bsq1X0G18BfTxwpTXu&export=download)
 
 ---
 
