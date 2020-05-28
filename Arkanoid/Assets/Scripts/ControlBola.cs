@@ -189,7 +189,7 @@ public class ControlBola : MonoBehaviour
         
         FindObjectOfType<AudioManager>().Play("sfx_combo_1");
         yield return new WaitForSeconds(1.5f);
-        if (golpesSeguidos <= 3 || (golpesSeguidos > 3 && !wohoo))
+        if (golpesSeguidos <= 3 || (golpesSeguidos > 3 && !wohoo && !r2d2))
         {
             FindObjectOfType<AudioManager>().Play("sfx_slowmo_revert");
             yield return new WaitForSeconds(0.2f);

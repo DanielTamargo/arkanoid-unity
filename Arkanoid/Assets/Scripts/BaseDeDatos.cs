@@ -28,11 +28,11 @@ public class BaseDeDatos : MonoBehaviour
         // Conectamos con la base de datos
         try
         {
-            db = FirebaseFirestore.GetInstance(FirebaseApp.DefaultInstance); //<- Bug!
+            db = FirebaseFirestore.GetInstance(FirebaseApp.Create()); // Se cierra también :/
         }
         catch
         {
-            db = FirebaseFirestore.GetInstance(FirebaseApp.Create()); // Se cierra también :/
+            db = FirebaseFirestore.GetInstance(FirebaseApp.DefaultInstance); //<- Bug!
         }
 
         // Creamos una referencia a una colección (es decir, a una """tabla""" para luego trabajar con los datos)

@@ -115,7 +115,7 @@ public class ControlOverlay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        t_nivel.text = "Nivel: " + nivel.ToString();
+        //t_nivel.text = "Nivel: " + nivel.ToString(); // lo traslado al metodo pasarNivel(); para no actualizarlo innecesariamente
         t_puntuacion.text = "Puntos: " + puntos.ToString();
         t_vidas.text = "Vidas: " + vidas.ToString();
         //t_jugador.text = nombreJugador;
@@ -232,13 +232,16 @@ public class ControlOverlay : MonoBehaviour
         if (nombreJugador.Length < 1 || nombreJugador.Trim() == "")
             nombreJugador = "Guest";
         else if (nombreJugador.Length > 5)
+        {
             nombreJugador = nombreJugador.Substring(0, 5);
-        t_jugador.text = nombreJugador;
+            t_jugador.text = nombreJugador;
+        }
 
         if (nombreJugador.ToLower().Contains("love"))
             love = true;
         else
             love = false;
+
         /* Todos estos ifs (y más) no me funcionaban bien :) (: :) (: :) (: :) (:
         if (nombreJugador.ToLower().CompareTo("love") == 1)
             love = true;
@@ -260,6 +263,7 @@ public class ControlOverlay : MonoBehaviour
     {
         puntosPreNivel = puntos;
         nivel += 1;
+        t_nivel.text = "Nivel: " + nivel.ToString();
         panel.SetActive(true);
         switch(nivel)
         {
@@ -309,7 +313,7 @@ public class ControlOverlay : MonoBehaviour
 
                 // Guardamos el registro cuando se pasa el nivel
                 FindObjectOfType<BaseDeDatos>().nuevaPuntuacion(puntos, nombreJugador);
-
+                
                 //Reseteamos datos
                 nivel = -1;
                 puntos = 0;
