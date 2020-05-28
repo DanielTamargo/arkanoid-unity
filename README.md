@@ -50,13 +50,13 @@ Nota: Todos estos enlaces son enlaces a aplicaciones o repositorios **sin la bas
 
 ### Canciones
 
-- Menú principal: Mountain Trials 8 bit
-- Menú puntuaciones: Ayasake no Starmine 8 bit
-- Nivel 1: Adventure 8 bit
-- Nivel 2: Castlevania 8 bit
-- Nivel 3: Kevin McLeod - Dungeon 8 bit
-- Nivel 4: Hero Academia 8 bit
-- Especial: What is Love 8 bit
+- [Menú principal: Joshua McLean - Mountain Trials (8bit)](https://www.youtube.com/watch?v=L_OYo2RS8iU)
+- [Menú puntuaciones: Ayasake no Starmine (8bit)](https://youtu.be/DPDXPA2HuAU)
+- [Nivel 1: HeatleyBros - 8 Bit Adventure (8bit)](https://www.youtube.com/watch?v=Wsw-86zjb8I)
+- [Nivel 2: Castlevania: Bloodlines (8bit)](https://www.youtube.com/watch?v=Ie5ZO2wSqtc)
+- [Nivel 3: Kevin McLeod - Dungeon (8bit)](https://youtu.be/In9xTpfjorU)
+- [Nivel 4: Boku No Hero Academia OP - Peace Sign (8bit)](https://www.youtube.com/watch?v=cO7QF21FBno)
+- [Especial: What is Love (8bit)](https://www.youtube.com/watch?v=CT8t_1JXWn8)
 
 ### Sonidos
 
