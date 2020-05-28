@@ -52,14 +52,16 @@ Unity me ha gustado bastante. Empecé con unos conocimientos muy básicos y olvi
 
 La base de datos Firebase me ha sorprendido, es como bien dices en el vídeo de la explicación, un Json gigante que puede encadenar varios Json. La rapidez de respuesta con el servidor es brutal y el trabajar con esta bd es bastante cómodo. Es una pena que haga que Unity deje de funcionar y que de problemas con las librerías al hacer un Build (aunque esta última parte igual es más bien culpa mía, pero creo que no he sido el único con este problema).
 
-Mi opinión sobre el proyecto es bastante positiva, he aprendido bastante en estos días que le he dedicado de desarrollo, y he notado como mi progreso iba a más y más. Es uno de esos proyectos que siempre que le echas un vistazo se te ocurre algo que añadirle, y no descarto seguir trabajando sobre él en el futuro.
+Mi opinión sobre el proyecto es bastante positiva, he aprendido muchísmo en estos días que le he dedicado de desarrollo, y he notado como mi progreso iba a más y más. Es uno de esos proyectos que siempre que le echas un vistazo se te ocurre algo que añadirle, y no descarto seguir trabajando sobre él en el futuro.
 
 ---
 
 ## Curiosidades
 
 - Los 4 niveles cuentan con un sistema de "combos", donde si golpeas varias veces los bloques sin volver a tocar la plataforma y consigues romperlos sonarán distintos sonidos y aumentará significativamente tu puntuación (sirve de multiplicador), si quieres buscar la puntuación más alta, buscar los combos será tu camino.
-- Cuando un bloque que tiene más de un golpe de vida recibe golpes, se va agrietando hasta morir. Estos efectos los he añadido a base de editar las imágenes.
+- Cuando un bloque que tiene más de un golpe de vida recibe golpes, se va agrietando hasta morir. De esta manera se da un efecto visual a la vida restante de los bloques. También añadí un efecto pequeño de partículas para simular que se desprenden trozos del bloque favoreciendo aún más lo anterior.
+- En el logo de la aplicación se puede apreciar como los bloques azules, morados y rojos intentan proteger de la bola al bloque verde, tal como se puede ver en la "historia" del juego.
+- En el último nivel se puede encontrar el bloque verde, el jefe. Estaba pensado que el bloque verde crease disparos que cayeran hacia abajo y que si golpeaban la plataforma, la dejaran aturdida durante 1.5segundos (¿quizás en futuras actualizaciones?).
 
 ---
 
