@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Nivel4.unity
     guid: cc30b9aa7c63b2a489a78e66331b27b3
+  - enabled: 1
+    path: Assets/Scenes/Puntuaciones.unity
+    guid: fd3c2da2a8bc0b249b88e4d73aebc697
   m_configObjects: {}

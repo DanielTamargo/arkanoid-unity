@@ -39,7 +39,7 @@ public class BaseDeDatos : MonoBehaviour
         CollectionReference puntuaciones = db.Collection("puntuaciones");
         
         // Preparamos la Query
-        Query query = puntuaciones.OrderByDescending("puntos").Limit(10);
+        Query query = puntuaciones.OrderByDescending("puntos").Limit(30);
         
         // Creamos un listener con la Query, es decir, recogemos los datos pero no solo eso
         // sino que también, este listener se ejecutará cada vez que haya un cambio en la BBDD

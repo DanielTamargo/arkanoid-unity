@@ -5218,8 +5218,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8668280781323581200}
-        m_MethodName: testNuevaPuntuacion
+      - m_Target: {fileID: 721870125}
+        m_MethodName: escenaPuntuaciones
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6394,15 +6394,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ff0c2355ab833b41a69174203cb34c1, type: 3}
---- !u!114 &8668280781323581200 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3418370768810205191, guid: 3ff0c2355ab833b41a69174203cb34c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 8668280781323581199}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c4cee693a7b0ed498aaf76a6a7d01a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -324,6 +324,13 @@ public class ControlOverlay : MonoBehaviour
         }
     }
 
+    public void escenaPuntuaciones()
+    {
+        FindObjectOfType<AudioManager>().Stop("bg_nivel_0");
+        FindObjectOfType<AudioManager>().Play("bg_puntuaciones");
+        SceneManager.LoadScene(5);
+    }
+
     void ponerMusicaLove()
     {
         if (love)
