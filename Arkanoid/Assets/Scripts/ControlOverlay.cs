@@ -227,15 +227,14 @@ public class ControlOverlay : MonoBehaviour
 
     public void configurarNombre()
     {
-        nombreJugador = "Guest";
+
         nombreJugador = t_input_jugador.text;
-        if (nombreJugador.Length < 1 || nombreJugador.Trim() == "")
-            nombreJugador = "Guest";
-        else if (nombreJugador.Length > 5)
-        {
+        if (nombreJugador.Length > 5)
             nombreJugador = nombreJugador.Substring(0, 5);
-            t_jugador.text = nombreJugador;
-        }
+        else
+            nombreJugador = "Guest";
+
+        t_jugador.text = nombreJugador;
 
         if (nombreJugador.ToLower().Contains("love"))
             love = true;

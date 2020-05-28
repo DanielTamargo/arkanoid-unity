@@ -8,13 +8,20 @@ public class ControlPuntuaciones : MonoBehaviour
 {
     public GameObject anterior;
     public GameObject siguiente;
-    public GameObject puntuaciones;
+
+    public GameObject bestScore;
+    public GameObject puntuaciones_pos;
+    public GameObject puntuaciones_nombre;
+    public GameObject puntuaciones_puntos;
+
     private List<Puntuacion> listaPuntuaciones = new List<Puntuacion>();
     private int pagina = 1;
 
     // Start is called before the first frame update
     void Start()
     {
+        //anterior.GetComponent<TextMeshProUGUI>().enabled = false; //<- error
+        //anterior.GetComponent<TextMeshPro>().enabled = false; //<- error
         anterior.SetActive(false);
         actualizarPuntuaciones();
     }
@@ -32,17 +39,19 @@ public class ControlPuntuaciones : MonoBehaviour
         siguiente.SetActive(true);
 
         if (pagina <= 1)
+        {
             anterior.SetActive(false);
-        
+            bestScore.SetActive(false);
+        }
     }
 
     public void botonSiguiente()
     {
         pagina++;
+        bestScore.SetActive(false);
         actualizarPuntuaciones();
         anterior.SetActive(true);
-        
-        if ((pagina + 1) * 6 >= listaPuntuaciones.Count)
+        if ((pagina * 6)  + 1>= listaPuntuaciones.Count)
             siguiente.SetActive(false);
 
     }
@@ -56,11 +65,11 @@ public class ControlPuntuaciones : MonoBehaviour
     void actualizarPuntuaciones()
     {
         listaPuntuaciones = FindObjectOfType<BaseDeDatos>().listaPuntuaciones;
-        string texto_puntuaciones = "";
+        string texto_posiciones = "";
+        string texto_nombres = "";
+        string texto_puntos = "";
         if (listaPuntuaciones.Count > 0)
         {
-            //string formato = "{0,16}{1,13}{2,17}";
-            string formato = "{0}{1}{2}";
             int posicion = 1 + (6 * (pagina - 1));
             int objetivo = posicion + 6;
             for(int i = posicion; i < objetivo; i++)
@@ -70,17 +79,20 @@ public class ControlPuntuaciones : MonoBehaviour
                     Puntuacion puntuacion = listaPuntuaciones[i];
                     string nombre = puntuacion.nombre;
                     string puntos = puntuacion.puntos.ToString();
-                    string linea = string.Format(formato, posicion.ToString().PadLeft(16), 
-                        nombre.PadLeft(18), puntos.PadLeft(11));
-                    texto_puntuaciones += linea + "\n";
+                    string posicionStr = posicion.ToString();
+                    texto_posiciones += posicionStr + "\n";
+                    texto_nombres += nombre + "\n";
+                    texto_puntos += puntos + "\n";
                     posicion++;
                 }
             }
         } else
         {
-            texto_puntuaciones = "\n\nActualmente no hay registros o hay problemas con la base de datos";
+            texto_posiciones = "\n\nActualmente no hay registros o hay problemas con la base de datos";
         }
-        puntuaciones.GetComponent<TextMeshProUGUI>().text = texto_puntuaciones;
+        puntuaciones_pos.GetComponent<TextMeshProUGUI>().text = texto_posiciones;
+        puntuaciones_nombre.GetComponent<TextMeshProUGUI>().text = texto_nombres;
+        puntuaciones_puntos.GetComponent<TextMeshProUGUI>().text = texto_puntos;
     }
 
 }

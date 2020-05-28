@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-
         if (instance == null)
             instance = this;
         else {
@@ -63,6 +62,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
         Debug.Log("Reproduciendo: " + nombre);
-        s.source.Play();        
+        s.source.Play();
     }
 }
