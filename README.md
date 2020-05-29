@@ -23,7 +23,7 @@
 
 ### Menú pausa (in game)
 
-<img src="/readme-assets/menupausa.png" alt="MenuPausa" width="4500"/>
+<img src="/readme-assets/menupausa.png" alt="MenuPausa" width="400"/>
 
 ---
 
