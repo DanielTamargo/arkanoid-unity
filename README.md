@@ -19,11 +19,11 @@
 
 ### Menú puntuaciones + Ocultando panel
 
-<img src="/readme-assets/menupuntuaciones.png" alt="MenuPuntuaciones" width="400"/> <img src="/readme-assets/menupuntuaciones2.gif" alt="MenuPuntuacionesBG" width="400" height="236.5"/>
+<img src="/readme-assets/menupuntuaciones.png" alt="MenuPuntuaciones" width="400" height="236.5"/> <img src="/readme-assets/menupuntuaciones2.gif" alt="MenuPuntuacionesBG" width="400" height="236.5"/>
 
 ### Menú pausa (in game)
 
-<img src="/readme-assets/menupausa.png" alt="MenuPausa" width="400"/>
+<img src="/readme-assets/menupausa.png" alt="MenuPausa" width="400" height="236.5"/>
 
 ---
 
@@ -31,11 +31,11 @@
 
 ### Niveles 1 y 2
 
-<img src="/readme-assets/nivel1.png" alt="Nivel1" width="400"/> <img src="/readme-assets/nivel2.png" alt="Nivel2" width="400"/>
+<img src="/readme-assets/nivel1.png" alt="Nivel1" width="400" height="236.5"/> <img src="/readme-assets/nivel2.png" alt="Nivel2" width="400" height="236.5"/>
 
 ### Niveles 3 y 4
 
-<img src="/readme-assets/nivel3.png" alt="Nivel3" width="400"/> <img src="/readme-assets/nivel4.png" alt="Nivel4" width="400"/>
+<img src="/readme-assets/nivel3.png" alt="Nivel3" width="400" height="236.5"/> <img src="/readme-assets/nivel4.png" alt="Nivel4" width="400" height="236.5"/>
 
 ---
 
