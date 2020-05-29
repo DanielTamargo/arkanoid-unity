@@ -19,7 +19,7 @@
 
 ### Menú puntuaciones + Ocultando panel
 
-<img src="/readme-assets/menupuntuaciones.png" alt="MenuPuntuaciones" width="400"/> <img src="/readme-assets/menupuntuaciones2.gif" alt="MenuPuntuacionesBG" width="400" height="236"/>
+<img src="/readme-assets/menupuntuaciones.png" alt="MenuPuntuaciones" width="400"/> <img src="/readme-assets/menupuntuaciones2.gif" alt="MenuPuntuacionesBG" width="400" height="236.5"/>
 
 ### Menú pausa (in game)
 
