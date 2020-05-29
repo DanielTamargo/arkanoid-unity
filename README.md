@@ -15,6 +15,8 @@
 ### Menú principal + Menú opciones
 
 ![MenuPrincipal](/readme-assets/menuprincipal.png =250x)
+<img src="/readme-assets/menuprincipal.png" alt="Menu1" width="250"/>
+
 ![MenuOpciones](/readme-assets/menuopciones.png =250x)
 
 ### Menú puntuaciones + Ocultando panel
