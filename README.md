@@ -41,9 +41,9 @@
 
 ## Reflexión
 
-Unity me ha gustado bastante. Empecé con unos conocimientos muy básicos y olvidados y a través de informarme en internet, ensayo y error y tratar de innovar continuamente creo que he conseguido un proyecto bastante bueno.
+Unity me ha gustado bastante. Empecé con unos conocimientos muy básicos y olvidados y a través de informarme en internet, ensayo y error y tratar de innovar continuamente creo que he conseguido un proyecto bastante logrado.
 
-La base de datos Firebase me ha sorprendido, es como bien dices en el vídeo de la explicación, un Json gigante que puede encadenar varios Json. La rapidez de respuesta con el servidor es brutal y el trabajar con esta bd es bastante cómodo. Es una pena que haga que Unity deje de funcionar y que de problemas con las librerías al hacer un Build (aunque esta última parte igual es más bien culpa mía, pero creo que no he sido el único con este problema).
+La base de datos Firebase me ha sorprendido, es, como bien dices en el vídeo de la explicación, un Json gigante. La rapidez de respuesta con el servidor es brutal y el trabajar con esta bd es bastante cómodo. Es una pena que haga que Unity deje de funcionar y que de problemas con las librerías al hacer un Build (aunque esta última parte igual es más bien culpa mía, pero creo que no he sido el único con este problema).
 
 Mi opinión sobre el proyecto es bastante positiva, he aprendido muchísmo en estos días que le he dedicado de desarrollo, y he notado como mi progreso iba a más y más. Es uno de esos proyectos que siempre que le echas un vistazo se te ocurre algo que añadirle, y no descarto seguir trabajando sobre él en el futuro.
 
@@ -52,13 +52,21 @@ Mi opinión sobre el proyecto es bastante positiva, he aprendido muchísmo en es
 ## Curiosidades
 
 - Hay un nombre de jugador que desencadena un easter egg, desbloqueando una canción que sólo puede escucharse con ese nombre (o con contener ese nombre).
-- El fondo que se mueve es una imagen que crea un clon detrás de ella al empezar y después cada imagen crea un clon cada vez que llega a X posición, simulando que es un paisaje infinito, realmente son dos imágenes moviéndose seguidas y cada vez que la primera llega al final, se clona al principio y vuelve a empezar.
-- Los 4 niveles cuentan con un sistema de "combos", donde si golpeas varias veces los bloques sin volver a tocar la plataforma y consigues romperlos sonarán distintos sonidos y aumentará significativamente tu puntuación (sirve de multiplicador), si quieres buscar la puntuación más alta, buscar los combos será tu camino.
+
+- El fondo que se mueve es una imagen con desplazamiento horizontal que crea detras de sí misma un clon de la misma imagen con las mismas propiedades, y después cada clon de esta imagen crea otro clon cuando llega a X posición, simulando que es un paisaje infinito, realmente son dos imágenes moviéndose seguidas y cada vez que la primera llega al final, se clona al principio y vuelve a empezar.
+
+- Los 4 niveles cuentan con un sistema de "combos", donde si golpeas varias veces los bloques sin volver a tocar la plataforma y consigues romperlos sonarán distintos sonidos y aumentará significativamente tu puntuación (sirve de multiplicador), si quieres buscar la puntuación más alta, intentar realizar combos será tu camino.
+
 - Cuando un bloque que tiene más de un golpe de vida recibe golpes, se va agrietando con cada golpe hasta morir. De esta manera se da un efecto visual a la vida restante de los bloques. También añadí un efecto pequeño de partículas para simular que se desprenden trozos del bloque favoreciendo aún más lo anterior.
+
 - En el logo de la aplicación se puede apreciar como los bloques azules, morados y rojos intentan proteger de la bola al bloque verde, tal como se puede ver en la "historia" del juego.
+
 - En el último nivel se puede encontrar el bloque verde, el jefe. Estaba pensado que el bloque verde crease disparos que cayeran hacia abajo y que si golpeaban la plataforma, la dejaran aturdida durante 1.5segundos (¿quizás en futuras actualizaciones?).
+
 - También en el último nivel se puede aprovechar la mecánica de irse por un lado de la pantalla y aparecer por el otro, puesto que al comenzarlo se destruyen los pilares que bloqueaban el paso a la plataforma.
+
 - En el dispositivo móvil se comienza una vez el usuario pulse la pantalla por primera vez en el nivel y hay una cuenta atrás para que pueda situarse donde quiera. En el ordenador te indica que comenzará cuando presiones la barra espaciadora.
+
 - En la pantalla de puntuaciones, se pueden apreciar varios detalles en la imagen de fondo. La he editado de tal manera que se puedan apreciar los siguientes detalles:
   * En la TV se puede ver el segundo nivel del juego.
   * Encima a la derecha de la pantalla está el logo del juego.
