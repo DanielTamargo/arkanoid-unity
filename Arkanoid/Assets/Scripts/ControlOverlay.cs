@@ -119,7 +119,7 @@ public class ControlOverlay : MonoBehaviour
         //t_nivel.text = "Nivel: " + nivel.ToString(); // lo traslado al metodo pasarNivel(); para no actualizarlo innecesariamente
         t_puntuacion.text = "Puntos: " + puntos.ToString();
         t_vidas.text = "Vidas: " + vidas.ToString();
-        //t_jugador.text = nombreJugador;
+        t_jugador.text = nombreJugador;
     }
 
     public void intentoFallido()
@@ -242,9 +242,12 @@ public class ControlOverlay : MonoBehaviour
         }
         else if (t_input_jugador.text.Length - 1 > 5)
         {
-            nombreJugador = t_input_jugador.text.Substring(0, 5);
+            nombreJugador = t_input_jugador.text;
             //Debug.Log("Grande");
         }
+
+        if (nombreJugador.Length > 5)
+            nombreJugador = nombreJugador.Substring(0, 5);
 
         t_jugador.text = nombreJugador;
 

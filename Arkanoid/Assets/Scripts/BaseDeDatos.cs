@@ -96,7 +96,7 @@ public class BaseDeDatos : MonoBehaviour
         try
         {
             // Creamos un id aleatorio para la colección
-            string id = db.Collection("collection_name").Document().Id;
+            string id = db.Collection("puntuaciones").Document().Id;
 
             // Creamos el documento con el id aleatorio
             DocumentReference docRef = db.Collection("puntuaciones").Document(id);
